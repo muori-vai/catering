@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ingrediente</title>
+</head>
+
+<body>
+	<p>Ingrediente salvato con successo!</p>
+	<h4>Dettagli ingrediente</h4>
+	<div th:if="${ingrediente}">
+		<span th:text="${ingrediente.nome}">nome ingrediente</span>
+		<span th:text="${ingrediente.descrizione}">descrizione ingrediente</span>
+	</div>
+	<div th:unless="${ingrediente}">Non esiste</div>
+
+	<footer>
+		<div th:insert="fragments/common" :: "foot"></div>
+	</footer>
+</body>
+
+</html>

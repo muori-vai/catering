@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Buffet</title>
+</head>
+
+<body>
+	<p>Buffet salvato con successo!</p>
+	<h4>Dettagli buffet</h4>
+	<div th:if="${buffet}">
+		<span th:text="${buffet.nome}">nome buffet</span>
+		<span th:text="${buffet.descrizione}">descrizione buffet</span>
+		<span th:text="${buffet.chef.cognome}">nome chef</span>
+	</div>
+	<div th:unless="${buffet}">Non esiste</div>
+
+	<footer>
+		<a th:href="@{'/chef/' + ${buffet.chef.id}}">Chef</a>
+		<div th:insert="fragments/common" :: "foot"></div>
+	</footer>
+</body>
+
+</html>

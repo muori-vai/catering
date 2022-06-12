@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Cancellazione</title>
+</head>
+
+<body>
+	<h4>Buffet da cancellare</h4>
+	<div>
+		<span th:text="${buffet.nome}">Buffet freddo</span>
+		<span th:text="${buffet.descrizione}">Bel buffet freddo salato</span>
+	</div>
+	<div>
+		<a href="buffet.html" th:href="@{'/confirmDeleteBuffet/' + ${buffet.id}}" th:text="Conferma">Conferma</a>
+		
+	<footer>
+		<div th:insert="fragments/common" :: "foot"></div>
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Piatto</title>
+</head>
+
+<body>
+	<h4>Dettagli piatto</h4>
+	<div th:if="${piatto}">
+		<span th:text="${piatto.nome}">nome piatto</span>
+		<span th:text="${piatto.descrizione}">descrizione piatto</span>
+		<span th:text="${piatto.buffet.nome}">nome buffet</span>
+		<p> Lista ingredienti: </p>
+		<ul>
+			<li th:each="ingrediente : ${piatto.ingredienti}">
+				<span th:text="${ingrediente.nome}">nome ingrediente</span>
+				<span th:text="${ingrediente.descrizione}">descrizione ingrediente</span>
+				<span th:text="${ingrediente.origine}">origine ingrediente</span>
+				<span>	
+					<a href="ingrediente.html"
+					th:href="@{'/ingrediente/' + ${ingrediente.id}}"
+					th:text="dettagli">dettagli</a>
+				</span>
+				<span>
+					<a href="deleteIngrediente.html"
+					th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}"
+					th:text="cancella">cancella</a>
+				</span>
+			</li>
+		</ul>
+		<!-- <a th:href="@{'/piatto/' + ${piatto.id} + '/ingredienteForm'}">Inserisci Ingrediente</a> -->
+		<a th:href="@{'/piatto/' + ${piatto.id} + '/ingredienti'}">Visualizza Ingredienti</a>
+	</div>
+	<div th:unless="${piatto}">Non esiste</div>
+
+	<footer>
+		<a th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
+		<a href="/">Home</a>
+	</footer>
+</body>
+
+</html>

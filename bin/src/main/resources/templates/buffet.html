@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Buffet</title>
+</head>
+
+<body>
+	<div th:if="${buffet}">
+		<table>
+			<caption>Dettagli buffet</caption>
+			<tr>
+				<th>Nome</th><th>Descrizione</th><th>Cognome chef</th>
+			</tr>
+			<tr>
+				<th th:text="${buffet.nome}">nome buffet</th>
+				<th th:text="${buffet.descrizione}">descrizione buffet</th>
+				<th th:text="${buffet.chef.cognome}">cognome chef</th>
+			</tr>
+		</table>
+
+		<table>
+			<caption>Lista piatti</caption>
+			<tr>
+				<th>Nome</th><th>Descrizione</th><th>Operazioni</th>
+			</tr>
+			<tr th:each="piatto : ${piatti}">
+				<th th:text="${piatto.nome}">nome piatto</th>
+				<th th:text="${piatto.descrizione}">descrizione piatto</th>
+				<th>
+					<a href="piatto.html"
+					th:href="@{'/piatto/' + ${piatto.id}}"
+					th:text="dettagli">dettagli</a>
+					<a href="deletePiatto.html"
+					th:href="@{'/deletePiatto/' + ${piatto.id}}"
+					th:text="cancella">cancella</a>
+				</th>
+			</tr>
+		</table>
+		
+		<a th:href="@{'/buffet/' + ${buffet.id} + '/piattoForm'}">Inserisci Piatto</a>
+		<a th:href="@{'/buffet/' + ${buffet.id} + '/piatti'}">Visualizza Piatti</a>
+		<a th:href="@{/piatti}">Visualizza tutti Piatti</a>
+	</div>
+	<div th:unless="${buffet}">Non esiste</div>
+
+	<footer>
+		<a th:href="@{'/chef/' + ${buffet.chef.id}}">Chef</a>
+		<a href="/">Home</a>
+	</footer>
+</body>
+
+</html>

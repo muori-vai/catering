@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento ingrediente</title>
+</head>
+
+<body>
+	<form th:action="@{'/piatto/' + ${id} + '/ingrediente'}" method="POST" th:object="${ingrediente}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		<div>
+			Nome: <input type="text" th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
+			</div>
+		</div>
+		<div>
+			Descrizione: <input type="text" th:field="*{descrizione}" />
+			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
+			</div>
+		</div>
+		<div>
+			Origine: <input type="text" th:field="*{origine}" />
+			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}">
+			</div>
+		</div>
+		<div>
+			<button type="submit">Conferma</button>
+		</div>
+	</form>
+</body>
+
+</html>
