@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Modifica chef')">
+<head th:replace="fragments/common.html :: header(title='Inserimento chef')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<form th:action="@{'/editChef/' + ${id}}" method="POST" th:object="${chef}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Modifica chef</h1>
+			<form th:action="@{'/editChef/' + ${id}}" method="POST" th:object="${chef}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<table class="form">
+					<tr>
+						<td>Nome:</td>
+						<td><input type="text" placeholder="nome" required th:field="*{nome}" /></td>
+						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td>Cognome:</td>
+						<td><input type="text" placeholder="cognome" required th:field="*{cognome}" /></td>
+						<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td>Nazionalità:</td>
+						<td><input type="text" placeholder="nazionalità" required th:field="*{nazionalita}" /></td>
+						<td th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"
+							th:style="'color:red'">
+						</td>
+					</tr>
+				</table>
+				<div class="flex-row">
+					<button type="submit" class="button-3">Conferma</button>
+					<a class="button-3" href="/" th:href="@{/chefs}">Annulla</a>
+				</div>
+			</form>
 		</div>
-		<div>
-			Nome: <input type="text" th:field="*{nome}" />
-			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
-			</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-chef-insert">
 		</div>
-		<div>
-			Cognome: <input type="text" th:field="*{cognome}" />
-			<div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">
-			</div>
-		</div>
-		<div>
-			Nazionalità: <input type="text" th:field="*{nazionalita}" />
-			<div th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}">
-			</div>
-		</div>
-		<div>
-			<button type="submit">Conferma</button>
-		</div>
-	</form>
-	
+	</div>
+
 	<footer>
 		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

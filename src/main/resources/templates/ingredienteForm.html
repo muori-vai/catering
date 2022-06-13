@@ -6,31 +6,48 @@
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Inserisci ingrediente</h1>
+			<form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<table class="form">
+					<tr>
+						<td>Nome:</td>
+						<td><input type="text" placeholder="nome" required th:field="*{nome}" /></td>
+						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td>Descrizione:</td>
+						<td><input type="text" placeholder="descrizione" required th:field="*{descrizione}" /></td>
+						<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"
+							th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td>Origine:</td>
+						<td><input type="text" placeholder="origine" required th:field="*{origine}" /></td>
+						<td th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}" th:style="'color:red'">
+						</td>
+					</tr>
+				</table>
+				<div>
+					<span><button type="submit" class="button-3">Conferma</button></span>
+					<a class="button-3" href="/" th:href="@{/default}">Annulla</a>
+				</div>
+			</form>
 		</div>
-		<div>
-			Nome: <input type="text" th:field="*{nome}" />
-			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
-			</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-ingredient-insert">
 		</div>
-		<div>
-			Descrizione: <input type="text" th:field="*{descrizione}" />
-			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
-			</div>
-		</div>
-		<div>
-			Origine: <input type="text" th:field="*{origine}" />
-			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}">
-			</div>
-		</div>
-		<div>
-			<button type="submit">Conferma</button>
-		</div>
-	</form>
-	<footer th:replace="fragments/common.html :: foot">
+	</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

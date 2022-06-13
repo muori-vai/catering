@@ -40,7 +40,7 @@ public class ChefService {
 		List<Chef> chefs = new ArrayList<Chef>();
 		
 		//dobbiamo fare così perché rep.findAll ritorna un iteratore
-		for(Chef c: chefRepository.findAll()) {
+		for(Chef c: chefRepository.findByOrderByCognomeAscNomeAscNazionalita()) {
 			chefs.add(c);
 		}
 		

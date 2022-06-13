@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Cancellazione ingrediente')">
+<head th:replace="fragments/common.html :: header(title='Inserimento ingrediente')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<h4>Ingrediente da cancellare</h4>
-	<div>
-		<span th:text="${ingrediente.nome}">nome ingrediente</span>
-		<span th:text="${ingrediente.descrizione}">descrizione ingrediente</span>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Ingrediente da rimuovere</h1>
+			<table class="form">
+				<tr>
+					<td>Nome:</td>
+					<td th:text="${ingrediente.nome}">nome ingrediente</td>
+				</tr>
+				<tr>
+					<td>Descrizione:</td>
+					<td th:text="${ingrediente.descrizione}">descrizione ingrediente</td>
+				</tr>
+				<tr>
+					<td>Origine:</td>
+					<td th:text="${ingrediente.origine}">origine ingrediente</td>
+				</tr>
+			</table>
+			<div class="flex-row">
+				<a class="button-3" href="ingrediente.html" th:href="@{'/confirmDeleteIngrediente/' + ${ingrediente.id}}"
+					th:text="Conferma">Conferma</a>
+				<a class="button-3" href="/" th:href="@{/ingredienti}">Annulla</a>
+			</div>
+		</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-ingredient-insert">
+		</div>
 	</div>
-	<div>
-		<a href="ingrediente.html" th:href="@{'/confirmDeleteIngrediente/' + ${ingrediente.id}}" th:text="Conferma">Conferma</a>
-		<button onclick="history.back()">Annulla</button>
-		
+
 	<footer>
 		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

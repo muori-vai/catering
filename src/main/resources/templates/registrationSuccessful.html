@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Esito registrazione')"> </head>
+
+<head th:replace="fragments/common.html :: header(title='Registrazione')">
+</head>
+
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-    	<h4 th:text="Registrazione">Registrazione</h4>
-		<h1>Congratulazioni, ti sei registrato!</h1>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Ti sei registrato con successo!</h1>
+			<a class="button-3" href="/" th:href="@{/}">Torna indietro</a>
+		</div>
+		<div th:replace="fragments/svg.html :: svg-register-succesful">
+		</div>
 	</div>
-   <div>
-		<a href="/" th:href="@{/}">Home</a>
-	</div>
-	
+
 	<footer th:replace="fragments/common.html :: foot">
 	</footer>
 </body>
+
 </html>

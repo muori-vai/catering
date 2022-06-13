@@ -52,6 +52,7 @@ public class IngredienteController {
 	}
 	*/
 	
+	@Transactional
 	@PostMapping("/ingrediente") //String perché ritorna il nome della vista
 	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
 
@@ -110,6 +111,7 @@ public class IngredienteController {
 		return "deleteIngrediente.html";
 	}
 	
+	@Transactional
 	@GetMapping("/confirmDeleteIngrediente/{id}")
 	public String confirmDeleteIngrediente(@PathVariable("id") Long id, Model model) {
 
@@ -129,7 +131,7 @@ public class IngredienteController {
 		
 		model.addAttribute("ingredienti", ingredienteService.findAll());
 		
-		return "ingredienti.html";
+		return "/ingredienti";
 	}
 	
 	@GetMapping("/editIngredienteForm/{id}")

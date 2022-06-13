@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> pensavo servisse tutto questo per sec:authorize, invece no-->
+
+<head th:replace="fragments/common.html :: header(title='Chef')">
+</head>
+
+<body>
+	<div th:insert="fragments/common.html :: nav"></div>
+
+	<div th:if="${chef}">
+		<table>
+			<caption>Dettagli chef</caption>
+			<tr>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Nazionalità</th>
+			</tr>
+			<tr>
+				<td th:text="${chef.nome}">nome chef</td>
+				<td th:text="${chef.cognome}">cognome chef</td>
+				<td th:text="${chef.nazionalita}">nazionalità chef</td>
+			</tr>
+		</table>
+
+		<div class="container-grid">
+
+			<table>
+				<caption>Lista buffet</caption>
+				<tr>
+					<th>Nome</th>
+					<th>Descrizione</th>
+					<th>Operazioni</th>
+				</tr>
+				<tr th:each="buffet : ${buffets}">
+					<td th:text="${buffet.nome}">nome buffet</td>
+					<td th:text="${buffet.descrizione}">descrizione buffet</td>
+					<td>
+						<a href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}" th:text="dettagli">dettagli</a>
+						<a sec:authorize="hasAuthority('ADMIN')" href="deleteBuffet.html"
+							th:href="@{'/deleteBuffet/' + ${buffet.id}}" th:text="cancella">cancella</a>
+					</td>
+				</tr>
+			</table>
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<a th:href="@{'/chef/' + ${chef.id} + '/buffetForm'}">Inserisci Buffet</a>
+				<a th:href="@{'/editChefForm/' + ${chef.id}}">Modifica Chef</a>
+			</div>
+
+			<a th:href="@{'/chef/' + ${chef.id} + '/buffets'}">Visualizza Buffets</a>
+			<a th:href="@{/buffets}">Visualizza tutti Buffets</a>
+		</div>
+
+	</div>
+
+	<div th:unless="${chef}">Non esiste</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+</body>
+
+</html>

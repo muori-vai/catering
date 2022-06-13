@@ -4,32 +4,34 @@
 <head th:replace="fragments/common.html :: header(title='Home')">
 </head>
 
-<body>
+<body class="home">
 	<div th:insert="fragments/common.html :: nav"></div>
 
-	<div class="container">
-
-		<div class="card">
-			<h4>Operazioni</h4>
-			<div sec:authorize="hasAuthority('ADMIN')">
-				<a th:href="@{/chefForm}">Inserisci Chef</a>
-			</div>
-			<div>
-				<a th:href="@{/chefs}">Visualizza Chefs</a>
-			</div>
-			<div>
-				<a th:href="@{/buffets}">Visualizza Buffets</a>
-			</div>
-			<div>
-				<a th:href="@{/piatti}">Visualizza Piatti</a>
-			</div>
-			<div sec:authorize="hasAuthority('ADMIN')">
-				<a th:href="@{/ingredienteForm}">Inserisci Ingrediente</a>
-			</div>
-			<div>
-				<a th:href="@{/ingredienti}">Visualizza Ingredienti</a>
-			</div>
-		</div>
+	<div class="container-grid">
+		<a class="button-3 button-3-home flex-column" th:href="@{/chefs}">
+			<div th:insert="fragments/svg.html :: svg-chef"></div>
+			<div>Visualizza Chefs</div>
+		</a>
+		<a class="button-3 button-3-home flex-column" th:href="@{/chefForm}" sec:authorize="hasAuthority('ADMIN')">
+			<div th:insert="fragments/svg.html :: svg-chef-insert"></div>
+			<div>Inserisci Chef</div>
+		</a>
+		<a class="button-3 button-3-home flex-column" th:href="@{/buffets}">
+			<div th:insert="fragments/svg.html :: svg-buffet"></div>
+			<div>Visualizza Buffets</div>
+		</a>
+		<a class="button-3 button-3-home flex-column" th:href="@{/piatti}">
+			<div th:insert="fragments/svg.html :: svg-plate"></div>
+			<div>Visualizza Piatti</div>
+		</a>
+		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienti}">
+			<div th:insert="fragments/svg.html :: svg-ingredient"></div>
+			<div>Visualizza Ingredienti</div>
+		</a>
+		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienteForm}" sec:authorize="hasAuthority('ADMIN')">
+			<div th:insert="fragments/svg.html :: svg-ingredient-insert"></div>
+			<div>Inserisci Ingrediente</div>
+		</a>
 	</div>
 
 	<footer>

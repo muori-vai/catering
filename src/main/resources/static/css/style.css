@@ -1,15 +1,93 @@
-html, body, div.container {
-	height: 100%;
+* {
+	box-sizing: border-box;
 	margin: 0;
-	font-family: helvetica;
+	padding: 0;
+	--color1: #e63946;
+	--color2: #f1faee;
+	--color3: #a8dadc;
+	--color4: #457b9d;
+	--color5: #1d3557;
+	
+}
+
+html, body, div.container {
+	font-family: 'Fjalla One', sans-serif;
+	font-weight: 400;
+	height: 100%;
+}
+
+button {
+	font-family: 'Fjalla One', sans-serif;
 }
 
 div.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
-	line-height: 1.7em;
+	line-height: auto;
+	color: var(--color5);
+}
+
+.container-grid {
+	width: 80%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	padding: auto;
+	gap: 1em;
+	margin: 4em auto;
+}
+
+.container-side {
+	height: 100vh;
+	width: 15%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color3);
+}
+
+.container-grid-buttons {
+	display: flex;
+}
+
+.grid {
+	border: solid .2em var(--color5);
+	background-color: var(--color3);
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1em;
+	margin: .8em;
+}
+
+.block {
+	margin: 2em auto;
+}
+
+.surname-tag {
+	position: relative;
+	border: solid 1px var(--color5);
+	background-color: var(--color2);
+	bottom: 3em;
+	left: 1.5em;
+}
+
+.surname-tag-chef {
+	position: relative;
+	border: solid 1px var(--color5);
+	background-color: var(--color2);
+	bottom: 3em;
+	left: 6em;
+	width: 4em;
+}
+
+.buffet-name-tag {
+	position: relative;
+	color: var(--color5);
+	bottom: 5.1em;
+	left: -2.5em;
 }
 
 nav {
@@ -20,6 +98,7 @@ nav {
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 5;
 	
 	display: flex;
 	justify-content: end;
@@ -32,17 +111,213 @@ div.navbar {
 }
 
 div.card {
-	border: solid 2px black;
-	border-radius: 10px;
-	background-color: gray;
+	/*border: solid 5px var(--color5);
+	border-radius: 25px;*/
+	height: auto;
 	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+div.card-border {
+	border: solid 0px var(--color5);
+	border-radius: 25px;
+	height: auto;
+	background-color: var(--color3);
+}
+
+div.card h1.index {
+	margin-bottom: 1em;
+	font-family: 'Pacifico', cursive;
+	font-size: 4em;
+}
+
+div.card h1.login {
+	margin: .1em;
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 3em;
+}
+
+.card .form {
+	font-size: 1.7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.card input {
+	font-size: .8em;
+	width: 7em;
+	height: 1.5em;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.flex-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button-3 {
+	background-color: var(--color2);
+	border-radius: 20px;
+	text-decoration: none;
+	border: 0px;
+	font-size: 1.5em;
+	color: var(--color5);
+	padding: .5em .5em;
+	position: relative;
+	margin: .5em;
+}
+
+.button-3::after, .button-3::before {
+	border: solid 0.1em var(--color5);
+	border-radius: 20px;
+	content: "";
+	position: absolute;
+	width: calc(100% - 0.1em);
+	height: calc(100% - 0.1em);
+	left: 0;
+	bottom: 0;
+	z-index: 0;
+	transition: transform 0.3s ease;
+}
+
+.button-3:hover::after {
+	transform: translate(-.2em, -.2em);
+}
+
+.button-3:hover::before {
+	transform: translate(.2em, .2em);
+}
+
+.button-3-home {
+	font-size: 2em;
+}
+
+.button-3-index {
+	font-size: 2em;
+	margin: .5em;
+}
+
+.button-3-grid {
+	font-size: 1em;
+	margin: .1em .1em;
+}
+
+a {
+	text-decoration: none;
 }
 
 nav a {
-	text-decoration: none;
 	color: white;
 }
 
 nav a:hover {
 	color: orange;
 }
+
+.svg-wave-1 {
+	width: 100%;
+	position: absolute;
+	z-index: -5;
+}
+
+.svg-wave-2 {
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	bottom: 0;
+}
+
+.svg-streetfood {
+	width: 50%;
+	z-index: -2;
+}
+
+.svg-login {
+	width: 50%;
+	z-index: -2;
+}
+
+.svg-chef svg {
+	width: 8em;
+	height: 8em;
+}
+
+.svg-beside svg {
+	width: 25em;
+	height: 25em;
+}
+
+.svg-icon-chef {
+	width: 12em;
+	height: 10.5em;
+}
+
+.back-1 {
+	background-color: var(--color1);
+}
+.back-2 {
+	background-color: var(--color2);
+}
+.back-3 {
+	background-color: var(--color3);
+}
+.back-4 {
+	background-color: var(--color4);
+}
+.back-5 {
+	background-color: var(--color5);
+}
+
+.background {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto auto auto auto auto;
+	width: 100%;
+	position: absolute;
+	z-index: -10;
+}
+
+.background-index {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: var(--color2);
+	z-index: -10;
+}
+
+.background-index-correction {
+	height: 1%;
+	width: 100%;
+	position: absolute;
+	background-color: var(--color5);
+	z-index: -10;
+	bottom: 0;
+}
+
+.background-normal {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1em;
+	width: 100%;
+	position: absolute;
+	z-index: -10;
+}
+
+.background-color2 {
+	background-color: var(--color2);
+	z-index: -10;
+}
+
+.home {
+	background-color: var(--color3);
+}
+

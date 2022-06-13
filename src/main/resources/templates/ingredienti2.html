@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Ingredienti')">
+</head>
+
+<body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	<div>
+		<h4>Elenco ingredienti:</h4>
+		<ul>
+			<li th:each="ingrediente : ${ingredienti}">
+				<span th:text="${ingrediente.nome}">nome ingrediente</span>
+				<span th:text="${ingrediente.descrizione}">descrizione ingrediente</span>
+				<span th:text="${ingrediente.origine}">origine ingrediente</span>
+				<span>	
+					<a href="ingrediente.html"
+					th:href="@{'/ingrediente/' + ${ingrediente.id}}"
+					th:text="dettagli">dettagli</a>
+				</span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a href="deleteIngrediente.html"
+					th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}"
+					th:text="cancella">cancella</a>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>
+</body>
+
+</html>

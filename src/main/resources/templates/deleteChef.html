@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Cancellazione chef')">
+<head th:replace="fragments/common.html :: header(title='Inserimento chef')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<h4>Chef da cancellare</h4>
-	<div>
-		<span th:text="${chef.nome}">Carlo</span>
-		<span th:text="${chef.cognome}">Cracco</span>
-		<span th:text="${chef.nazionalita}">italiano</span>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Chef da rimuovere</h1>
+			<table class="form">
+				<tr>
+					<td>Nome:</td>
+					<td th:text="${chef.nome}">nome chef</td>
+				</tr>
+				<tr>
+					<td>Cognome:</td>
+					<td th:text="${chef.cognome}">cognome chef</td>
+				</tr>
+				<tr>
+					<td>Nazionalità:</td>
+					<td th:text="${chef.nazionalita}">nazionalità chef</td>
+				</tr>
+			</table>
+			<div class="flex-row">
+				<a class="button-3" href="chef.html" th:href="@{'/confirmDeleteChef/' + ${chef.id}}"
+					th:text="Conferma">Conferma</a>
+				<a class="button-3" href="/" th:href="@{/chefs}">Annulla</a>
+			</div>
+		</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-chef-insert">
+		</div>
 	</div>
-	<div>
-		<a href="chef.html" th:href="@{'/confirmDeleteChef/' + ${chef.id}}" th:text="Conferma">Conferma</a>
-		
+
 	<footer>
 		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

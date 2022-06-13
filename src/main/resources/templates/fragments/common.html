@@ -5,6 +5,9 @@
 	<meta charset="UTF-8" />
 	<link th:href="@{/css/style.css}" rel="stylesheet">
 	<title th:text="${title}"></title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,6 +19,17 @@
 			<a th:href="@{/logout}" th:text="Esci">Esci</a>
 		</div>
 	</nav>
+
+	<div th:fragment="default-background">
+		<div class="background-index">
+		</div>
+		<div class="background-index-correction">
+		</div>
+		<div th:replace="fragments/svg.html :: svg-wave-1">
+		</div>
+		<div th:replace="fragments/svg.html :: svg-wave-2">
+		</div>
+	</div>
 
 	<footer th:fragment="foot">
 	</footer>

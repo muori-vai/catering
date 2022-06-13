@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Cancellazione chef')">
+</head>
+
+<body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	<h4>Chef da cancellare</h4>
+	<div>
+		<span th:text="${chef.nome}">Carlo</span>
+		<span th:text="${chef.cognome}">Cracco</span>
+		<span th:text="${chef.nazionalita}">italiano</span>
+	</div>
+	<div>
+		<a href="chef.html" th:href="@{'/confirmDeleteChef/' + ${chef.id}}" th:text="Conferma">Conferma</a>
+		
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+</body>
+
+</html>

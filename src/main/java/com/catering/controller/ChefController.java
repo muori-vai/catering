@@ -75,6 +75,7 @@ public class ChefController {
 		return "deleteChef.html";
 	}
 	
+	@Transactional
 	@GetMapping("/confirmDeleteChef/{id}")
 	public String confirmDeleteChef(@PathVariable("id") Long id, /*@RequestParam(value="action", required=true) String action,*/ Model model) {
 		/*if(action.equals("Elimina")) {

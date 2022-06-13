@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Login</title>
+<head th:replace="fragments/common.html :: header(title='Login')">
 </head>
 
 <body>
-	<div>
-		<h4>Login</h4>
+	<div th:replace="fragments/common.html :: default-background">
 	</div>
-	<form th:action="@{/login}" method="POST">
-		<div>
-			<div>
-				<span>Username:</span>
-				<span><input name="username" type="text" required /></span>
-			</div>		
-			<div>
-				<span>Password:</span>
-				<span><input name="password" type="password" required /></span>
-			</div>
-			<div>
-				<span><button type="submit">Login</button></span>
-			</div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Accedi al tuo account</h1>
+			<form th:action="@{/login}" method="POST">
+
+				<table class="form">
+					<tr>
+						<td>Username:</td>
+						<td><input name="username" placeholder="username" type="text" required /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input name="password" placeholder="password" type="password" required /></td>
+					</tr>
+				</table>
+				<div>
+					<span><button type="submit" class="button-3">Login</button></span>
+					<a class="button-3" href="/" th:href="@{/}">Annulla</a>
+				</div>
+			</form>
 		</div>
-	</form>
-	
-	<div>
-		<a href="/" th:href="@{/}">Annulla</a>
+		<div th:replace="fragments/svg.html :: svg-login">
+		</div>
 	</div>
-	
+
 	<footer th:replace="fragments/common.html :: foot">
 	</footer>
 </body>
+
 </html>

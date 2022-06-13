@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Ingrediente')">
+<head th:replace="fragments/common.html :: header(title='Inserimento ingrediente')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<h4>Dettagli ingrediente</h4>
-	<div th:if="${ingrediente}">
-		<span th:text="${ingrediente.nome}">nome ingrediente</span>
-		<span th:text="${ingrediente.descrizione}">descrizione ingrediente</span>
-		<span th:text="${ingrediente.origine}">origine ingrediente</span>
+	<div th:replace="fragments/common.html :: default-background"></div>
 
-		<div sec:authorize="hasAuthority('ADMIN')">
-			<a th:href="@{'/editIngredienteForm/' + ${ingrediente.id}}">Modifica Ingrediente</a>
-			<a th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}">Cancella Ingrediente</a>
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Dettagli ingrediente</h1>
+			<table class="form">
+				<tr>
+					<td>Nome:</td>
+					<td th:text="${ingrediente.nome}">nome ingrediente</td>
+				</tr>
+				<tr>
+					<td>Descrizione:</td>
+					<td th:text="${ingrediente.descrizione}">descrizione ingrediente</td>
+				</tr>
+				<tr>
+					<td>Origine:</td>
+					<td th:text="${ingrediente.origine}">origine ingrediente</td>
+				</tr>
+			</table>
+			<div class="flex-row">
+				<a class="button-3" href="/" th:href="@{/ingredienti}">Lista degli ingredienti</a>
+			</div>
+		</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-ingredient-insert">
 		</div>
 	</div>
-	<div th:unless="${ingrediente}">Non esiste</div>
 
-	<footer th:replace="fragments/common.html :: foot">
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>
