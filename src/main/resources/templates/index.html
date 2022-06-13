@@ -3,19 +3,25 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Home</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<title th:text="Welcome"></title>
 </head>
 
 <body>
-	<div>
-		<h4>Operazioni</h4>
+	<div class="container">
 		<div>
-			<a th:href="@{/login}" th:text="Accedi">Accedi</a>
-   		</div>
-   		<div>
-			<a th:href="@{/register}" th:text="Registrati">Registrati</a>
-   		</div>
+			<h4>Welcome to Saints' Catering</h4>
+			<div>
+				<a th:href="@{/login}" th:text="Accedi">Accedi</a>
+			</div>
+			<div>
+				<a th:href="@{/register}" th:text="Registrati">Registrati</a>
+			</div>
+		</div>
 	</div>
+
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>
 </body>
 
 </html>

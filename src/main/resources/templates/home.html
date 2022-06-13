@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Home</title>
+<head th:replace="fragments/common.html :: header(title='Home')">
 </head>
 
 <body>
-	<div>
-		<h4>Operazioni</h4>
-		<div sec:authorize="hasAuthority('ADMIN')">
-			<a th:href="@{/chefForm}">Inserisci Chef</a>
+	<div th:insert="fragments/common.html :: nav"></div>
+
+	<div class="container">
+
+		<div class="card">
+			<h4>Operazioni</h4>
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<a th:href="@{/chefForm}">Inserisci Chef</a>
+			</div>
+			<div>
+				<a th:href="@{/chefs}">Visualizza Chefs</a>
+			</div>
+			<div>
+				<a th:href="@{/buffets}">Visualizza Buffets</a>
+			</div>
+			<div>
+				<a th:href="@{/piatti}">Visualizza Piatti</a>
+			</div>
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<a th:href="@{/ingredienteForm}">Inserisci Ingrediente</a>
+			</div>
+			<div>
+				<a th:href="@{/ingredienti}">Visualizza Ingredienti</a>
+			</div>
 		</div>
-		<div>
-			<a th:href="@{/chefs}">Visualizza Chefs</a>
-		</div>
-		<div>
-			<a th:href="@{/buffets}">Visualizza Buffets</a>
-		</div>
-		<div>
-			<a th:href="@{/piatti}">Visualizza Piatti</a>
-		</div>
-		<div sec:authorize="hasAuthority('ADMIN')">
-			<a th:href="@{/ingredienteForm}">Inserisci Ingrediente</a>
-		</div>
-		<div>
-			<a th:href="@{/ingredienti}">Visualizza Ingredienti</a>
-		</div>
-		<div>
-			<a th:href="@{/logout}" th:text="Esci">Esci</a>
-   		</div>
 	</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
 </body>
 
 </html>

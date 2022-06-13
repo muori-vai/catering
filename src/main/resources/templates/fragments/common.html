@@ -1,14 +1,24 @@
-<html>
-	<body>
-		<div id="footer" th:fragment="foot">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header(title)">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<title th:text="${title}"></title>
+</head>
+
+<body>
+	<nav th:fragment="nav">
+		<div class="navbar">
+			<a href="/" th:href="@{/default}" th:text="Home">Home</a>
 		</div>
-		
-		<div th:fragment="navbar">
-				
+		<div class="navbar">
+			<a th:href="@{/logout}" th:text="Esci">Esci</a>
 		</div>
-		
-		<div th:fragment="myHeader">
-			<a href="/" th:href="@{/default}">Home</a>
-		</div>
-	</body>
+	</nav>
+
+	<footer th:fragment="foot">
+	</footer>
+</body>
+
 </html>

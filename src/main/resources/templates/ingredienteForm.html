@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Inserimento ingrediente</title>
+<head th:replace="fragments/common.html :: header(title='Inserimento ingrediente')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
 	<form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
@@ -30,8 +29,7 @@
 			<button type="submit">Conferma</button>
 		</div>
 	</form>
-	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
+	<footer th:replace="fragments/common.html :: foot">
 	</footer>
 </body>
 

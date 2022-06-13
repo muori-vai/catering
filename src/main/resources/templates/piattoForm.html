@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Inserimento piatto</title>
+<head th:replace="fragments/common.html :: header(title='Inserimento piatto')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	
 	<form th:action="@{'/buffet/' + ${id} + '/piatto'}" method="POST" th:object="${piatto}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
@@ -35,9 +35,8 @@
 			<button type="submit">Conferma</button>
 		</div>
 	</form>
-	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
-	</footer>
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>s
 </body>
 
 </html>

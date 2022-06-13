@@ -1,0 +1,48 @@
+html, body, div.container {
+	height: 100%;
+	margin: 0;
+	font-family: helvetica;
+}
+
+div.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	line-height: 1.7em;
+}
+
+nav {
+	height: 3em;
+	background-color: rgba(0, 0, 0, 0.60);
+	
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+div.navbar {
+	color: white;
+	margin: 3em;
+}
+
+div.card {
+	border: solid 2px black;
+	border-radius: 10px;
+	background-color: gray;
+	padding: 1em;
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+}
+
+nav a:hover {
+	color: orange;
+}

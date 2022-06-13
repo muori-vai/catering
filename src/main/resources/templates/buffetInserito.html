@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Buffet</title>
+<head th:replace="fragments/common.html :: header(title='Buffet salvato')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
+
 	<p>Buffet salvato con successo!</p>
 	<h4>Dettagli buffet</h4>
 	<div th:if="${buffet}">
@@ -18,7 +18,7 @@
 
 	<footer>
 		<a th:href="@{'/chef/' + ${buffet.chef.id}}">Chef</a>
-		<div th:insert="fragments/common" :: "foot"></div>
+		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
 </body>
 

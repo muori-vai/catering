@@ -1,6 +1,7 @@
 package com.catering.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,6 +41,9 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
+		//ho aggiunto questo perché senza il logout funziona male 
+		//(invalidateHttpSession = true (AuthConfiguration) non va!), non so per quale motivo
+		SecurityContextHolder.getContext().setAuthentication(null);
 		return "index";
 	}
 	

@@ -7,8 +7,11 @@
     	<h4 th:text="Registrazione">Registrazione</h4>
 		<h1>Congratulazioni, ti sei registrato!</h1>
 	</div>
-    <footer>
-    	<div th:insert="fragments/common" :: "foot"></div>
-    </footer>
+   <div>
+		<a href="/" th:href="@{/}">Home</a>
+	</div>
+	
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>
 </body>
 </html>

@@ -26,9 +26,11 @@
 		</div>
 	</form>
 	
-	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
-	</footer>
+	<div>
+		<a href="/" th:href="@{/}">Annulla</a>
+	</div>
 	
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>
 </body>
 </html>

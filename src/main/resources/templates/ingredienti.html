@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Ingredienti</title>
+<head th:replace="fragments/common.html :: header(title='Ingredienti')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
 	<div>
 		<h4>Elenco ingredienti:</h4>
 		<ul>
@@ -19,7 +18,7 @@
 					th:href="@{'/ingrediente/' + ${ingrediente.id}}"
 					th:text="dettagli">dettagli</a>
 				</span>
-				<span>
+				<span sec:authorize="hasAuthority('ADMIN')">
 					<a href="deleteIngrediente.html"
 					th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}"
 					th:text="cancella">cancella</a>
@@ -27,8 +26,7 @@
 			</li>
 		</ul>
 	</div>
-	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
+	<footer th:replace="fragments/common.html :: foot">
 	</footer>
 </body>
 

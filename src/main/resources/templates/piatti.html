@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Piatti</title>
+<head th:replace="fragments/common.html :: header(title='Piatti')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	
 	<div>
 		<h4>Elenco piatti:</h4>
 		<ul>
@@ -18,7 +18,7 @@
 					th:href="@{'/piatto/' + ${piatto.id}}"
 					th:text="dettagli">dettagli</a>
 				</span>
-				<span>
+				<span sec:authorize="hasAuthority('ADMIN')">
 					<a href="deletePiatto.html"
 					th:href="@{'/deletePiatto/' + ${piatto.id}}"
 					th:text="cancella">cancella</a>
@@ -26,8 +26,8 @@
 			</li>
 		</ul>
 	</div>
-	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
+	
+	<footer th:replace="fragments/common.html :: foot">
 	</footer>
 </body>
 

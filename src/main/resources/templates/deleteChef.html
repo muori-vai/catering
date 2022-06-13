@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Cancellazione</title>
+<head th:replace="fragments/common.html :: header(title='Cancellazione chef')">
 </head>
 
 <body>
+	<div th:insert="fragments/common.html :: nav"></div>
 	<h4>Chef da cancellare</h4>
 	<div>
 		<span th:text="${chef.nome}">Carlo</span>
@@ -17,7 +16,7 @@
 		<a href="chef.html" th:href="@{'/confirmDeleteChef/' + ${chef.id}}" th:text="Conferma">Conferma</a>
 		
 	<footer>
-		<div th:insert="fragments/common" :: "foot"></div>
+		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
 </body>
 
