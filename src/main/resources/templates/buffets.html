@@ -4,29 +4,43 @@
 <head th:replace="fragments/common.html :: header(title='Buffets')">
 </head>
 
-<body>
+<body class="background-color2">
 	<div th:insert="fragments/common.html :: nav"></div>
 
-	<div>
-		<h4>Elenco buffets:</h4>
-		<ul>
-			<li th:each="buffet : ${buffets}">
-				<span th:text="${buffet.nome}">nome buffet</span>
-				<span th:text="${buffet.descrizione}">descrizione buffet</span>
-				
-				<span>	
-					<a href="buffet.html"
-					th:href="@{'/buffet/' + ${buffet.id}}"
+	<div class="container-grid">
+		<div class="grid" th:each="buffet : ${buffets}">
+
+			<div th:replace="fragments/svg.html :: svg-icon-buffet">
+			</div>
+
+			<div class="buffet-name-tag" th:text="${buffet.nome}">nome buffet</div>
+
+			<table>
+				<tr>
+					<td>Nome:</td>
+					<td th:text="${buffet.nome}">nome buffet</td>
+				</tr>
+				<tr>
+					<td>Descrizione:</td>
+					<td th:text="${buffet.descrizione}">descrizione buffet</td>
+				</tr>
+			</table>
+
+			<div class="container-grid-buttons">
+				<a class="button-3 button-3-grid" href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}"
 					th:text="dettagli">dettagli</a>
-				</span>
-				<span sec:authorize="hasAuthority('ADMIN')">
-					<a href="deleteBuffet.html"
-					th:href="@{'/deleteBuffet/' + ${buffet.id}}"
-					th:text="cancella">cancella</a>
-				</span>
-			</li>
-		</ul>
+				<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="editBuffetForm.html"
+					th:href="@{'/editBuffetForm/' + ${buffet.id}}" th:text="modifica">modifica</a>
+				<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="deleteBuffet.html"
+					th:href="@{'/deleteBuffet/' + ${buffet.id}}" th:text="cancella">cancella</a>
+			</div>
+		</div>
+		<!--<a class="button-3 button-3-home flex-column" th:href="@{/buffetForm}" sec:authorize="hasAuthority('ADMIN')">
+			<div th:insert="fragments/svg.html :: svg-buffet-insert"></div>
+			<div>Inserisci Buffet</div>
+		</a> CHEF NON SPECIFICATO -->
 	</div>
+
 	<footer>
 		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>

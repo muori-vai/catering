@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Cancellazione piatto')">
+</head>
+
+<body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	<h4>Piatto da cancellare</h4>
+	<div>
+		<span th:text="${piatto.nome}">nome piatto</span>
+		<span th:text="${piatto.descrizione}">descrizione piatto</span>
+	</div>
+	<div>
+		<a href="piatto.html" th:href="@{'/confirmDeletePiatto/' + ${piatto.id}}" th:text="Conferma">Conferma</a>
+		
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+</body>
+
+</html>

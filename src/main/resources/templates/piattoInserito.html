@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Piatto salvato')">
+<head th:replace="fragments/common.html :: header(title='Buffet salvato')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	
-	
-	<p>Piatto salvato con successo!</p>
-	<h4>Dettagli piatto</h4>
-	<div th:if="${piatto}">
-		<span th:text="${piatto.nome}">nome piatto</span>
-		<span th:text="${piatto.descrizione}">descrizione piatto</span>
-		<span th:text="${piatto.buffet.nome}">nome buffet</span>
-	</div>
-	<a th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
-	<div th:unless="${piatto}">Non esiste</div>
+	<div th:replace="fragments/common.html :: default-background"></div>
 
-	<footer th:replace="fragments/common.html :: foot">
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Piatto salvato con successo!</h1>
+			<a class="button-3" href="piatto.html" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
+			<a class="button-3" href="piatto.html" th:href="@{'/piatto/' + ${piatto.id}}">Vedi piatto in dettaglio</a>
+			<a class="button-3" href="piatti.html" th:href="@{/piatti}">Lista dei piatti</a>
+		</div>
+		<div th:replace="fragments/svg.html :: svg-register-succesful">
+		</div>
+	</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

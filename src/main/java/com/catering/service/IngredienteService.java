@@ -49,7 +49,7 @@ public class IngredienteService {
 //			ingredienti.add(i);
 //		}
 		//per avere la lista degli ingredienti in ordine alfabetico
-		for(Ingrediente i: ingredienteRepository.findByOrderByNome()) {
+		for(Ingrediente i: ingredienteRepository.findByOrderByNomeAscOrigineAsc()) {
 			ingredienti.add(i);
 		}
 		

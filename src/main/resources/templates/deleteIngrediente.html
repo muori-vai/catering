@@ -26,9 +26,11 @@
 				</tr>
 			</table>
 			<div class="flex-row">
-				<a class="button-3" href="ingrediente.html" th:href="@{'/confirmDeleteIngrediente/' + ${ingrediente.id}}"
-					th:text="Conferma">Conferma</a>
+				<a class="button-3" href="ingrediente.html"
+					th:href="@{'/confirmDeleteIngrediente/' + ${ingrediente.id}}" th:text="Conferma">Conferma</a>
 				<a class="button-3" href="/" th:href="@{/ingredienti}">Annulla</a>
+				<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
+
 			</div>
 		</div>
 		<div class="svg-beside" th:insert="fragments/svg.html :: svg-ingredient-insert">

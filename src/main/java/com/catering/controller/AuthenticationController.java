@@ -17,66 +17,79 @@ import com.catering.service.CredentialsService;
 
 @Controller
 public class AuthenticationController {
-	
+
 	@Autowired
 	private CredentialsService credentialsService;
-	
+
 	@Autowired
 	private UserValidator userValidator;
-	
+
 	@Autowired
 	private CredentialsValidator credentialsValidator;
-	
-	@RequestMapping(value = "/register", method = RequestMethod.GET) 
-	public String showRegisterForm (Model model) {
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String showRegisterForm(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
 		return "registerUser";
 	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) 
-	public String showLoginForm (Model model) {
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String showLoginForm(Model model) {
 		return "loginForm";
 	}
-	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
+
+//	@RequestMapping(value = "/login-error", method = RequestMethod.GET)
+//	public String showLoginFormError(Model model) {
+//		return "loginFormError";
+//	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
-		//ho aggiunto questo perché senza il logout funziona male 
-		//(invalidateHttpSession = true (AuthConfiguration) non va!), non so per quale motivo
+		// ho aggiunto questo perché senza il logout funziona male
+		// (invalidateHttpSession = true (di AuthConfiguration) non va!), non so per
+		// quale motivo
 		SecurityContextHolder.getContext().setAuthentication(null);
-		return "index";
+		return "goodbye";
 	}
-	
-    @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public String defaultAfterLogin(Model model) {
-        
-//    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+	@RequestMapping(value = "/default", method = RequestMethod.GET)
+	public String defaultAfterLogin(Model model) {
+
+//  	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-//    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+//  	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 //            return "admin/home";
 //      }
-        return "home";
-    }
-	
-    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") User user,
-                 BindingResult userBindingResult,
-                 @ModelAttribute("credentials") Credentials credentials,
-                 BindingResult credentialsBindingResult,
-                 Model model) {
 
-        // validate user and credentials fields
-        this.userValidator.validate(user, userBindingResult);
-        this.credentialsValidator.validate(credentials, credentialsBindingResult);
+		/* Non funziona */
+//    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication();
+//    	if (userDetails == null)
+//    	{
+//    		return "loginFormError";
+//    	}
 
-        // if neither of them had invalid contents, store the User and the Credentials into the DB
-        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
-            // set the user and store the credentials;
-            // this also stores the User, thanks to Cascade.ALL policy
-            credentials.setUser(user);
-            credentialsService.saveCredentials(credentials);
-            return "registrationSuccessful";
-        }
-        return "registerUser";
-    }
+		return "home";
+	}
+
+	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+	public String registerUser(@ModelAttribute("user") User user, BindingResult userBindingResult,
+			@ModelAttribute("credentials") Credentials credentials, BindingResult credentialsBindingResult,
+			Model model) {
+
+		// validate user and credentials fields
+		this.userValidator.validate(user, userBindingResult);
+		this.credentialsValidator.validate(credentials, credentialsBindingResult);
+
+		// if neither of them had invalid contents, store the User and the Credentials
+		// into the DB
+		if (!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
+			// set the user and store the credentials;
+			// this also stores the User, thanks to Cascade.ALL policy
+			credentials.setUser(user);
+			credentialsService.saveCredentials(credentials);
+			return "registrationSuccessful";
+		}
+		return "registerUser";
+	}
 }

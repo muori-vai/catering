@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Cancellazione piatto')">
+<head th:replace="fragments/common.html :: header(title='Inserimento ')">
 </head>
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	<h4>Piatto da cancellare</h4>
-	<div>
-		<span th:text="${piatto.nome}">nome piatto</span>
-		<span th:text="${piatto.descrizione}">descrizione piatto</span>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Piatto da rimuovere</h1>
+			<table class="form">
+				<tr>
+					<td>Nome:</td>
+					<td th:text="${piatto.nome}">nome piatto</td>
+				</tr>
+				<tr>
+					<td>Descrizione:</td>
+					<td th:text="${piatto.descrizione}">descrizione piatto</td>
+				</tr>
+			</table>
+			<div class="flex-row">
+				<a class="button-3" href=".html" th:href="@{'/confirmDeletePiatto/' + ${piatto.id}}"
+					th:text="Conferma">Conferma</a>
+				<a class="button-3" href="/piatti" th:href="@{/piatti}">Piatti</a>
+				<a class="button-3" href="/buffet" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
+			</div>
+		</div>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-plate-insert">
+		</div>
 	</div>
-	<div>
-		<a href="piatto.html" th:href="@{'/confirmDeletePiatto/' + ${piatto.id}}" th:text="Conferma">Conferma</a>
-		
+
 	<footer>
 		<div th:insert="fragments/common.html :: foot"></div>
 	</footer>
+
 </body>
 
 </html>

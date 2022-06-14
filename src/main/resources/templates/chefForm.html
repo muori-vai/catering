@@ -20,25 +20,26 @@
 				<table class="form">
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" placeholder="nome" required th:field="*{nome}" /></td>
+						<td><input type="text" placeholder="nome" th:field="*{nome}" /></td>
 						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
 					</tr>
 					<tr>
 						<td>Cognome:</td>
-						<td><input type="text" placeholder="cognome" required th:field="*{cognome}" /></td>
+						<td><input type="text" placeholder="cognome" th:field="*{cognome}" /></td>
 						<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" th:style="'color:red'"></td>
 					</tr>
 					<tr>
 						<td>Nazionalità:</td>
-						<td><input type="text" placeholder="nazionalità" required th:field="*{nazionalita}" /></td>
+						<td><input type="text" placeholder="nazionalità" th:field="*{nazionalita}" /></td>
 						<td th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"
 							th:style="'color:red'">
 						</td>
 					</tr>
 				</table>
-				<div>
+				<div class="flex-row">
 					<span><button type="submit" class="button-3">Conferma</button></span>
-					<a class="button-3" href="/" th:href="@{/default}">Annulla</a>
+					<a class="button-3" href="/" th:href="@{/chefs}">Annulla</a>
+					<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
 				</div>
 			</form>
 		</div>

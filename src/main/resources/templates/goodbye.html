@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Catering')">
+
+<body>
+	<div th:replace="fragments/common.html :: default-background">
+	</div>
+
+	<div class="container">
+		<div class="card">
+			<h1 class="index">Alla prossima!</h1>
+			<div>
+				<a class="button-3 button-3-index" th:href="@{/}" th:text="Home">Home</a>
+			</div>
+		</div>
+		<div th:replace="fragments/svg.html :: svg-goodbye">
+		</div>
+	</div>
+
+	<footer th:replace="fragments/common.html :: foot">
+	</footer>
+</body>
+
+</html>

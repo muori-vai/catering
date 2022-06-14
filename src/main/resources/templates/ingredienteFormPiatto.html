@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="card card-border">
 			<h1 class="login">Inserisci ingrediente</h1>
-			<form th:action="@{'/editIngrediente/' + ${id}}" method="POST" th:object="${ingrediente}">
+			<form th:action="@{'/piatto/' + ${id} + '/ingrediente'}" method="POST" th:object="${ingrediente}">
 				<div th:if="${#fields.hasGlobalErrors()}">
 					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 				</div>
@@ -34,9 +34,9 @@
 						</td>
 					</tr>
 				</table>
-				<div class="flex-row">
+				<div>
 					<span><button type="submit" class="button-3">Conferma</button></span>
-					<a class="button-3" href="/" th:href="@{/ingredienti}">Annulla</a>
+					<a class="button-3" href="/" th:href="@{'/piatto/' + ${id}}">Annulla</a>
 					<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
 				</div>
 			</form>

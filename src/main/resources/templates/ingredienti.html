@@ -10,6 +10,12 @@
 	<div class="container-grid">
 		<div class="grid" th:each="ingrediente : ${ingredienti}">
 
+
+			<div th:replace="fragments/svg.html :: svg-icon-ingredient">
+			</div>
+
+			<div class="ingredient-name-tag" th:text="${ingrediente.nome}">nome ingrediente</div>
+
 			<table>
 				<tr>
 					<td>Nome:</td>
@@ -26,15 +32,16 @@
 			</table>
 
 			<div class="container-grid-buttons">
-				<a class="button-3 button-3-grid" href="ingrediente.html" th:href="@{'/ingrediente/' + ${ingrediente.id}}"
-					th:text="dettagli">dettagli</a>
+				<a class="button-3 button-3-grid" href="ingrediente.html"
+					th:href="@{'/ingrediente/' + ${ingrediente.id}}" th:text="dettagli">dettagli</a>
 				<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="editIngredienteForm.html"
 					th:href="@{'/editIngredienteForm/' + ${ingrediente.id}}" th:text="modifica">modifica</a>
 				<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="deleteIngrediente.html"
 					th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}" th:text="cancella">cancella</a>
 			</div>
 		</div>
-		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienteForm}" sec:authorize="hasAuthority('ADMIN')">
+		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienteForm}"
+			sec:authorize="hasAuthority('ADMIN')">
 			<div th:insert="fragments/svg.html :: svg-ingredient-insert"></div>
 			<div>Inserisci Ingrediente</div>
 		</a>

@@ -40,7 +40,7 @@ public class BuffetService {
 		List<Buffet> buffets = new ArrayList<Buffet>();
 		
 		//dobbiamo fare così perché findAll ritorna un iteratore
-		for(Buffet c: buffetRepository.findAll()) {
+		for(Buffet c: buffetRepository.findByOrderByNome()) {
 			buffets.add(c);
 		}
 		
@@ -51,7 +51,7 @@ public class BuffetService {
 		List<Buffet> buffets = new ArrayList<Buffet>();
 		
 		//dobbiamo fare così perché findAll ritorna un iteratore
-		for(Buffet b: buffetRepository.findAll()) {
+		for(Buffet b: buffetRepository.findByOrderByNome()) {
 			if(b.getChef().getId().equals(id))
 				buffets.add(b);
 		}

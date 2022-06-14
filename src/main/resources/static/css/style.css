@@ -7,7 +7,6 @@
 	--color3: #a8dadc;
 	--color4: #457b9d;
 	--color5: #1d3557;
-	
 }
 
 html, body, div.container {
@@ -38,13 +37,23 @@ div.container {
 }
 
 .container-side {
-	height: 100vh;
-	width: 15%;
+	height: 100%;
+	width: 15em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 	background-color: var(--color3);
+}
+
+.fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+.card-side {
+	margin-top: 10em;
 }
 
 .container-grid-buttons {
@@ -70,7 +79,8 @@ div.container {
 	position: relative;
 	border: solid 1px var(--color5);
 	background-color: var(--color2);
-	bottom: 3em;
+	/*color: var(--color2);*/
+	bottom: .5em;
 	left: 1.5em;
 }
 
@@ -78,12 +88,49 @@ div.container {
 	position: relative;
 	border: solid 1px var(--color5);
 	background-color: var(--color2);
-	bottom: 3em;
-	left: 6em;
-	width: 4em;
+	bottom: .5em;
+	left: 6.5em;
+	width: fit-content;
 }
 
 .buffet-name-tag {
+	position: relative;
+	color: var(--color5);
+	bottom: 5.1em;
+	left: -2.5em;
+}
+
+.buffet-name-tag-profile {
+	position: relative;
+	color: var(--color5);
+	bottom: 5.1em;
+	left: 3em;
+}
+
+.plate-name-tag {
+	position: relative;
+	color: var(--color2);
+	bottom: 6em;
+	left: 0;
+}
+
+.plate-name-tag-profile {
+	position: relative;
+	color: var(--color2);
+	bottom: 6em;
+	left: 5.25em;
+}
+
+.ingredient-name-tag {
+	position: relative;
+	color: var(--color5);
+	background-color: var(--color2);
+	bottom: 8.5em;
+	left: 0;
+	font-size: large;
+}
+
+.ingredient-name-tag-profile {
 	position: relative;
 	color: var(--color5);
 	bottom: 5.1em;
@@ -213,6 +260,11 @@ div.card input {
 
 a {
 	text-decoration: none;
+	color: var(--color4);
+}
+
+a:hover {
+	color: var(--color5);
 }
 
 nav a {
@@ -252,6 +304,7 @@ nav a:hover {
 }
 
 .svg-beside svg {
+	margin-left: 1em;
 	width: 25em;
 	height: 25em;
 }
@@ -317,7 +370,19 @@ nav a:hover {
 	z-index: -10;
 }
 
+
+
 .home {
 	background-color: var(--color3);
 }
 
+td {
+	padding: 5px;
+}
+
+.field {
+	max-height: 15em;
+	min-width: 20em;
+	overflow: auto;
+	
+}

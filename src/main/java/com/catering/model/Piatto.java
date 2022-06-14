@@ -3,6 +3,7 @@ package com.catering.model;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,8 @@ public class Piatto {
 	//@OneToMany(mappedBy = "piatto", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	//private List<Ingrediente> ingredienti;
 	
-	@ManyToMany
 	@NotEmpty
+	@ManyToMany(cascade = {CascadeType.PERSIST})
 	private List<Ingrediente> ingredienti;
 	
 	@ManyToOne

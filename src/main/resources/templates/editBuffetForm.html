@@ -18,18 +18,21 @@
 				<table class="form">
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" placeholder="nome" required th:field="*{nome}" /></td>
+						<td><input type="text" placeholder="nome" th:field="*{nome}" /></td>
 						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
 					</tr>
 					<tr>
 						<td>Descrizione:</td>
-						<td><input type="text" placeholder="descrizione" required th:field="*{descrizione}" /></td>
-						<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
+						<td><input type="text" placeholder="descrizione" th:field="*{descrizione}" /></td>
+						<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"
+							th:style="'color:red'"></td>
 					</tr>
 				</table>
 				<div>
 					<span><button type="submit" class="button-3">Conferma</button></span>
-					<a class="button-3" href="/" th:href="@{'/chef/' + ${buffet.chef.id}}">Annulla</a>
+					<a class="button-3" href="/" th:href="@{/buffets}">Buffets</a>
+					<a class="button-3" href="/" th:href="@{'/chef/' + ${idChef}}">Chef</a>
+					<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
 				</div>
 			</form>
 		</div>

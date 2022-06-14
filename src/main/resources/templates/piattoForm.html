@@ -6,37 +6,56 @@
 
 <body>
 	<div th:insert="fragments/common.html :: nav"></div>
-	
-	<form th:action="@{'/buffet/' + ${id} + '/piatto'}" method="POST" th:object="${piatto}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>
-		<div>
-			Nome: <input type="text" th:field="*{nome}" />
-			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
-			</div>
-		</div>
-		<div>
-			Descrizione: <input type="text" th:field="*{descrizione}" />
-			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
-			</div>
-		</div>
-		<div>
-			<fieldset>
-				<legend>Seleziona ingredienti</legend>
-				<div th:each="ingrediente: ${listaIngredienti}">
-					<input type="checkbox" id="${listaIngredienti}" th:field="*{ingredienti}" name="ingrediente"
-						th:value="${ingrediente.id}">
-					<label for="${listaIngredienti}" th:text="${ingrediente.nome}">nome ingrediente</label>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<form th:action="@{'/buffet/' + ${id} + '/piatto'}" method="POST" th:object="${piatto}">
+			<div class="card card-border">
+				<h1 class="login">Inserisci un piatto</h1>
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 				</div>
-			</fieldset>
+				<table class="form">
+					<tr>
+						<td>Nome:</td>
+						<td><input type="text" placeholder="nome" th:field="*{nome}" /></td>
+						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td>Descrizione:</td>
+						<td><input type="text" placeholder="descrizione" th:field="*{descrizione}" /></td>
+						<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"
+							th:style="'color:red'"></td>
+					</tr>
+				</table>
+				<div th:if="${#fields.hasErrors('ingredienti')}" th:errors="*{ingredienti}" th:style="'color:red'">
+				</div>
+				<fieldset class="field">
+					<legend>Seleziona ingredienti</legend>
+					<div th:each="ingrediente: ${listaIngredienti}">
+						<input type="checkbox" id="${listaIngredienti}" th:field="*{ingredienti}" name="ingrediente"
+							th:value="${ingrediente.id}" />
+						<label for="${listaIngredienti}" th:text="${ingrediente.nome}">nome ingrediente</label>
+						<a href="ingrediente.html" th:href="@{'/ingrediente/' + ${ingrediente.id}}">(dettagli)</a>
+					</div>
+				</fieldset>
+				<div class="flex-row">
+					<span><button type="submit" class="button-3">Conferma</button></span>
+					<a class="button-3" href="/" th:href="@{'/buffet/' + ${id}}">Annulla</a>
+				</div>
+			</div>
+		</form>
+		<div class="svg-beside" th:insert="fragments/svg.html :: svg-plate-insert">
 		</div>
-		<div>
-			<button type="submit">Conferma</button>
-		</div>
-	</form>
-	<footer th:replace="fragments/common.html :: foot">
-	</footer>s
+	</div>
+
+
+
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+
 </body>
 
 </html>
