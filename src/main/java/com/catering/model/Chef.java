@@ -83,7 +83,7 @@ public class Chef {
 			return false;
 		Chef other = (Chef) obj;
 		return Objects.equals(cognome, other.cognome)
-				&& Objects.equals(id, other.id) && Objects.equals(nazionalita, other.nazionalita)
+				&& Objects.equals(nazionalita, other.nazionalita)
 				&& Objects.equals(nome, other.nome);
 	}
 }

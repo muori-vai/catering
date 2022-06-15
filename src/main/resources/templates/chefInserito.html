@@ -12,7 +12,8 @@
 		<div class="card card-border">
 			<h1 class="login">Chef salvato con successo!</h1>
 			<a class="button-3" href="chef.html" th:href="@{'/chef/' + ${chef.id}}">Vedi chef in dettaglio</a>
-			<a class="button-3" href="chefs.html" th:href="@{/chefs}">Lista degli chef</a>
+			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
+			<!--<a class="button-3" href="chefs.html" th:href="@{/chefs}">Lista degli chef</a>-->
 		</div>
 		<div th:replace="fragments/svg.html :: svg-register-succesful">
 		</div>

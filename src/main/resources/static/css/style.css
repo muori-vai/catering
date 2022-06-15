@@ -3,10 +3,15 @@
 	margin: 0;
 	padding: 0;
 	--color1: #e63946;
+	--color1a: 230, 57, 70;
 	--color2: #f1faee;
+	--color2a: 241, 250, 238;
 	--color3: #a8dadc;
+	--color3a: 168, 218, 220;
 	--color4: #457b9d;
+	--color4a: 69, 123, 157;
 	--color5: #1d3557;
+	--color5a: 29, 53, 87;
 }
 
 html, body, div.container {
@@ -15,7 +20,7 @@ html, body, div.container {
 	height: 100%;
 }
 
-button {
+button, input {
 	font-family: 'Fjalla One', sans-serif;
 }
 
@@ -23,15 +28,16 @@ div.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	line-height: auto;
 	color: var(--color5);
+	height: 100vh;
 }
 
 .container-grid {
 	width: 80%;
 	display: grid;
+	position: relative;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	padding: auto;
+	padding: .8em;
 	gap: 1em;
 	margin: 4em auto;
 }
@@ -44,6 +50,7 @@ div.container {
 	align-items: center;
 	justify-content: start;
 	background-color: var(--color3);
+	padding: 1em;
 }
 
 .fixed {
@@ -61,14 +68,23 @@ div.container {
 }
 
 .grid {
-	border: solid .2em var(--color5);
+	/*border: solid .2em var(--color5);*/
 	background-color: var(--color3);
+	background-color: rgba(241, 250, 238, 0.1);
+	
+	box-shadow: -10px -10px 25px rgba(0, 0, 0, 0.5);
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 1em;
 	margin: .8em;
+	transition: 0.2s ease-out;
+	/*opacity: .75;*/
+}
+.grid:hover {
+	opacity: 1;
+	transform: scale(1.1);
 }
 
 .block {
@@ -79,11 +95,11 @@ div.container {
 	position: relative;
 	border: solid 1px var(--color5);
 	background-color: var(--color2);
-	/*color: var(--color2);*/
 	bottom: .5em;
 	left: 1.5em;
+	font-family: 'Caveat', cursive;
+	z-index: 1;
 }
-
 .surname-tag-chef {
 	position: relative;
 	border: solid 1px var(--color5);
@@ -91,55 +107,65 @@ div.container {
 	bottom: .5em;
 	left: 6.5em;
 	width: fit-content;
+	font-family: 'Caveat', cursive;
+	z-index: 1;
 }
-
 .buffet-name-tag {
 	position: relative;
 	color: var(--color5);
-	bottom: 5.1em;
-	left: -2.5em;
+	bottom: 2em;
+	left: -.5em;
+	font-family: 'Caveat', cursive;
+	font-size: 1.4em;
 }
-
 .buffet-name-tag-profile {
 	position: relative;
 	color: var(--color5);
-	bottom: 5.1em;
-	left: 3em;
+	bottom: 1.75em;
+	left: 1em;
+	font-family: 'Caveat', cursive;
+	font-size: 1.4em;
+	width: fit-content;
 }
-
 .plate-name-tag {
 	position: relative;
-	color: var(--color2);
-	bottom: 6em;
-	left: 0;
+	color: var(--color5);
+	background-color: var(--color2);
+	bottom: 4.4em;
+	left: 2em;
+	font-family: 'Caveat', cursive;
 }
-
 .plate-name-tag-profile {
 	position: relative;
-	color: var(--color2);
-	bottom: 6em;
-	left: 5.25em;
+	color: var(--color5);
+	background-color: var(--color2);
+	bottom: 4.4em;
+	left: 4em;
+	font-family: 'Caveat', cursive;
+	width: fit-content;
 }
-
 .ingredient-name-tag {
 	position: relative;
 	color: var(--color5);
 	background-color: var(--color2);
-	bottom: 8.5em;
+	bottom: 5em;
 	left: 0;
 	font-size: large;
+	font-family: 'Caveat', cursive;
 }
-
 .ingredient-name-tag-profile {
 	position: relative;
 	color: var(--color5);
 	bottom: 5.1em;
 	left: -2.5em;
+	font-family: 'Caveat', cursive;
+	width: fit-content;
 }
 
 nav {
-	height: 3em;
-	background-color: rgba(0, 0, 0, 0.60);
+	height: fit-content;
+	min-height: 7%;
+	background-color: rgba(0, 0, 0, 0.6);
 	
 	width: 100%;
 	position: fixed;
@@ -148,13 +174,26 @@ nav {
 	z-index: 5;
 	
 	display: flex;
-	justify-content: end;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	align-items: center;
+	padding: 0 1em;
 }
-
-div.navbar {
+nav .right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-right: auto;
+}
+nav .navbar {
 	color: white;
-	margin: 3em;
+	font-size: x-large;
+	padding-right: .8em;
+}
+nav .navIcon {
+	font-family: 'Pacifico', cursive;
+	font-size: x-large;
+	
 }
 
 div.card {
@@ -165,19 +204,32 @@ div.card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	text-align: center;
 }
 
 div.card-border {
 	border: solid 0px var(--color5);
 	border-radius: 25px;
 	height: auto;
-	background-color: var(--color3);
+	background-color: rgba(var(--color3a), .6);
 }
 
 div.card h1.index {
 	margin-bottom: 1em;
 	font-family: 'Pacifico', cursive;
 	font-size: 4em;
+	text-shadow: 2px 2px 10px var(--color2);
+}
+div.card h1.index:hover {
+	text-shadow: 2px 2px 30px var(--color2);
+}
+/* Card della schermata iniziale */
+div.card-index {
+	background-color: rgba(168, 218, 220, 0.4);
+	border-radius: 15px;
+	backdrop-filter: blur(3px);
+	min-height: 20em;
+	height: fit-content;
 }
 
 div.card h1.login {
@@ -211,8 +263,10 @@ div.card input {
 	justify-content: center;
 }
 
+/* Effetto per i pulsanti */
 .button-3 {
-	background-color: var(--color2);
+	background-color: rgba(var(--color2a), 0.5);
+	backdrop-filter: blur(5px);
 	border-radius: 20px;
 	text-decoration: none;
 	border: 0px;
@@ -222,7 +276,6 @@ div.card input {
 	position: relative;
 	margin: .5em;
 }
-
 .button-3::after, .button-3::before {
 	border: solid 0.1em var(--color5);
 	border-radius: 20px;
@@ -235,11 +288,9 @@ div.card input {
 	z-index: 0;
 	transition: transform 0.3s ease;
 }
-
 .button-3:hover::after {
 	transform: translate(-.2em, -.2em);
 }
-
 .button-3:hover::before {
 	transform: translate(.2em, .2em);
 }
@@ -247,12 +298,10 @@ div.card input {
 .button-3-home {
 	font-size: 2em;
 }
-
 .button-3-index {
 	font-size: 2em;
 	margin: .5em;
 }
-
 .button-3-grid {
 	font-size: 1em;
 	margin: .1em .1em;
@@ -268,11 +317,11 @@ a:hover {
 }
 
 nav a {
-	color: white;
+	color: var(--color2);
 }
 
 nav a:hover {
-	color: orange;
+	color: var(--color1);
 }
 
 .svg-wave-1 {
@@ -280,57 +329,101 @@ nav a:hover {
 	position: absolute;
 	z-index: -5;
 }
-
 .svg-wave-2 {
 	width: 100%;
 	position: absolute;
 	z-index: -1;
 	bottom: 0;
 }
-
 .svg-streetfood {
-	width: 50%;
-	z-index: -2;
+	position: absolute;
+	display: flex;
+	justify-content: end;
+	width: 100%;
+	z-index: -3;
+	overflow: hidden;
 }
-
+.svg-eat {
+	position: absolute;
+	display: flex;
+	justify-content: start;
+	align-items: end;
+	height: 100%;
+	width: 100%;
+	z-index: -2;
+	overflow: hidden;
+}
 .svg-login {
 	width: 50%;
 	z-index: -2;
+	overflow: hidden;
 }
-
+.svg-chef {
+	overflow: hidden;
+}
 .svg-chef svg {
 	width: 8em;
 	height: 8em;
 }
-
+.svg-beside {
+	overflow: hidden;
+}
 .svg-beside svg {
 	margin-left: 1em;
 	width: 25em;
 	height: 25em;
 }
-
-.svg-icon-chef {
+/* Usate come icone nelle liste */
+.svg-icon-chef { /* Usato per Chefs e Buffets */
 	width: 12em;
 	height: 10.5em;
+} /* Qui faccio la magia! */
+/* invert(%) sepia(%) saturate(%) hue-rotate(deg) brightness(%) contrast(%) */
+.editable{ /* Usato per Chefs e Buffets */
+	filter: hue-rotate(calc(53deg * var(--i))); /* Come per gli HASH */
 }
-
-.back-1 {
-	background-color: var(--color1);
+.editableDark{ /* Usato per Chefs e Buffets */
+	filter: hue-rotate(calc(53deg * var(--i))) brightness(80%); /* Come per gli HASH */
 }
-.back-2 {
-	background-color: var(--color2);
+.editable2{ /* Usato per Chefs e Buffets */
+	filter: hue-rotate(calc(97deg * var(--i)));
 }
-.back-3 {
-	background-color: var(--color3);
+.editable3{ /* Usato per Chefs e Buffets */
+	filter: hue-rotate(calc(193deg * var(--i)));
 }
-.back-4 {
-	background-color: var(--color4);
+.editable4{ /* Usato per Chefs e Buffets */
+	filter: saturate(calc(3 * var(--i)));
 }
-.back-5 {
-	background-color: var(--color5);
+.svg-icon-smaller { /* Usato per Piatti */
+	width: 9em;
+	height: 8em;
+}
+.svg-icon-smallest { /* Usato per Ingredienti*/
+	width: 7em;
+	height: 6em;
 }
 
 .background {
+	height: 150%;
+	width: 150%;
+	position: fixed;
+	z-index: -10;
+	background-image: url("/images/bg1.svg");
+}
+
+.background2 {
+	height: 150%;
+	width: 150%;
+	position: fixed;
+	z-index: -10;
+	background-image: url("/images/bg2.svg");
+}
+
+.background2 svg {
+	height: 200%;
+}
+
+.background1 {
 	min-height: 100vh;
 	display: grid;
 	grid-template-rows: auto auto auto auto auto;
@@ -339,14 +432,14 @@ nav a:hover {
 	z-index: -10;
 }
 
+/* background generale */
 .background-index {
 	height: 100%;
 	width: 100%;
 	position: absolute;
 	background-color: var(--color2);
 	z-index: -10;
-}
-
+} /* Serve perché rimane una sottilissima riga non colorata senza quando metto anche le onde */
 .background-index-correction {
 	height: 1%;
 	width: 100%;
@@ -370,19 +463,81 @@ nav a:hover {
 	z-index: -10;
 }
 
-
-
 .home {
 	background-color: var(--color3);
 }
 
+body {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: fit-content;
+	min-height: 100%;
+}
+
+/* per la distanza tra colonne e righe nelle tabelle */
 td {
 	padding: 5px;
 }
 
+/* Usato per Seleziona ingredienti in Inserisci piatto */
 .field {
 	max-height: 15em;
 	min-width: 20em;
 	overflow: auto;
-	
 }
+
+/* Pulsanti nei card che appaiono quando ci metto sopra il mouse */
+div .grid .container-grid-buttons .button-3 {
+	transform: translateY(2em);
+	opacity: 0;
+	transition: 0.25s;
+	/*transition-delay: calc(0.05s * var(--num));*/
+}
+div .grid:hover .container-grid-buttons .button-3 {
+	transform: translateY(0px);
+	opacity: 1;
+} 
+/* se sei un button-3 e sei il secondo figlio, allora... */
+div .grid .container-grid-buttons .button-3:nth-child(2) {
+	transition-delay: 0.05s;
+}
+div .grid .container-grid-buttons .button-3:nth-child(3) {
+	transition-delay: 0.1s;
+}
+
+/*.grid > table, .card-side >*/ table {
+	min-width: 12em;
+	background-color: var(--color2);
+	border-radius: 1em;
+	margin-bottom: 1em;
+}
+
+.svg-wave-3 {
+	position: absolute;
+	width: 100%;
+	top: 0;
+}
+
+.svg-wave-4 {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+.footer {
+	margin: 0;
+	font-size: .75em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: 3em;
+	background-color: var(--color4);
+}
+

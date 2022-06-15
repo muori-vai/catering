@@ -62,7 +62,7 @@ public class IngredienteController {
 		// ingrediente.getPiatti().add(piattoService.findById(id));
 		// ingrediente.setPiatto(piattoService.findById(id));
 		ingredienteValidator.validate(ingrediente, bindingResult);
-
+		
 		if (!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", ingrediente);
@@ -146,6 +146,9 @@ public class IngredienteController {
 	@GetMapping("/confirmDeleteIngrediente/{id}")
 	public String confirmDeleteIngrediente(@PathVariable("id") Long id, Model model) {
 
+		// per cancellare tutti i piatti che non hanno più ingredienti dopo la cancellazione
+		List<Piatto> listPiattiToRemove = new ArrayList<Piatto>();
+		
 		// bisogna prima rimuovere l'ingrediente da tutti i piatti che lo contengono e
 		// poi provare a levarlo dalla base di dati (sennò dà errore)
 		for (Piatto p : this.piattoService.findAll()) {
@@ -157,6 +160,14 @@ public class IngredienteController {
 				}
 			}
 			ingredienti.removeAll(listToRemove);
+			if(p.getIngredienti().isEmpty()) {
+				listPiattiToRemove.add(p);
+			}
+		}
+		
+		// per cancellare tutti i piatti che non hanno più ingredienti dopo la cancellazione
+		while(listPiattiToRemove.size() > 0) {
+			this.piattoService.delete(listPiattiToRemove.remove(0));
 		}
 
 		this.ingredienteService.deleteById(id);

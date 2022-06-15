@@ -33,15 +33,14 @@ public class BuffetController {
 
 	@PostMapping("/chef/{id}/buffet") // String perché ritorna il nome della vista
 	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult,
-			@PathVariable("id") Long id, Model model) {
+			/* posso omettere il nome ("id") se è uguale */ @PathVariable Long id, Model model) {
 
+		buffet.setChef(chefService.findById(id));
 		buffetValidator.validate(buffet, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
-			buffet.setChef(chefService.findById(id));
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);
-
 			return "buffetInserito.html";
 		}
 

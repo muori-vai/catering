@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Errore')">
+</head>
+
+<body>
+	<div th:insert="fragments/common.html :: nav"></div>
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Sembra che ci sia stato un problema!</h1>
+			<a class="button-3" href="home.html" th:href="@{/default}">Torna indietro</a>
+		</div>
+		<div th:replace="fragments/svg.html :: svg-warning">
+		</div>
+	</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+
+</body>
+
+</html>

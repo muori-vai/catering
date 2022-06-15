@@ -9,6 +9,8 @@
 <body class="background-color2">
 	<div th:insert="fragments/common.html :: nav"></div>
 
+	<div class="background"></div>
+
 	<div class="flex-row">
 
 		<div class="container-side">
@@ -69,7 +71,7 @@
 
 				<div class="container-grid-buttons">
 					<a class="button-3 button-3-grid" href="piatto.html" th:href="@{'/piatto/' + ${piatto.id}}"
-						th:text="dettagli">dettagli</a>
+						th:text="Ingredienti">ingredienti</a>
 					<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="editPiattoForm.html"
 						th:href="@{'/editPiattoForm/' + ${piatto.id}}" th:text="modifica">modifica</a>
 					<a class="button-3 button-3-grid" sec:authorize="hasAuthority('ADMIN')" href="deletePiatto.html"

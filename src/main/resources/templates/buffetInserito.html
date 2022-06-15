@@ -11,9 +11,10 @@
 	<div class="container">
 		<div class="card card-border">
 			<h1 class="login">Buffet salvato con successo!</h1>
-			<a class="button-3" href="buffet.html" th:href="@{'/chef/' + ${buffet.chef.id}}">Chef</a>
-			<a class="button-3" href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}">Vedi buffet in dettaglio</a>
-			<a class="button-3" href="buffets.html" th:href="@{/buffets}">Lista dei buffet</a>
+			<a class="button-3" href="buffet.html" th:href="@{'/chef/' + ${id}}">Vedi lo chef</a>
+			<a class="button-3" href="buffets.html" th:href="@{/buffets}">Vedi tutti i buffet</a>
+			<!--<a class="button-3" href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}">Vedi buffet in dettaglio</a> Non funziona -->
+			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
 		</div>
 		<div th:replace="fragments/svg.html :: svg-register-succesful">
 		</div>

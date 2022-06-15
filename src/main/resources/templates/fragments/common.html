@@ -7,32 +7,53 @@
 	<title th:text="${title}"></title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Pacifico&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Fjalla+One&family=Pacifico&display=swap"
+		rel="stylesheet">
+	<link rel="icon" href="images/catering.png" type="image/x-icon">
 </head>
 
 <body>
 	<nav th:fragment="nav">
-		<div class="navbar">
-			<a href="/" th:href="@{/default}" th:text="Home">Home</a>
+		<div class="left">
+			<div class="navIcon">
+				<a href="/" th:href="@{/}">Saint's Catering</a>
+			</div>
 		</div>
-		<div class="navbar">
-			<a th:href="@{/logout}" th:text="Esci">Esci</a>
+		<div class="right">
+			<div class="navbar">
+				<a href="/" th:href="@{/default}" th:text="Home">Home</a>
+			</div>
+			<div class="navbar">
+				<a href="/chefs" th:href="@{/chefs}">Chefs</a>
+			</div>
+			<div class="navbar">
+				<a href="/buffets" th:href="@{/buffets}">Buffets</a>
+			</div>
+			<div class="navbar">
+				<a href="/piatti" th:href="@{/piatti}">Piatti</a>
+			</div>
+			<div class="navbar">
+				<a href="/ingredienti" th:href="@{/ingredienti}">Ingredienti</a>
+			</div>
+			<div class="navbar">
+				<a th:href="@{/logout}" th:text="Esci">Esci</a>
+			</div>
 		</div>
 	</nav>
 
 	<div th:fragment="default-background">
-		<div class="background-index">
-		</div>
-		<div class="background-index-correction">
-		</div>
-		<div th:replace="fragments/svg.html :: svg-wave-1">
-		</div>
-		<div th:replace="fragments/svg.html :: svg-wave-2">
-		</div>
+		<!--<div class="background-index"></div>-->
+		<div th:replace="fragments/svg.html :: svg-wave-1"></div>
+		<div th:replace="fragments/svg.html :: svg-wave-2"></div>
+		<div class="background2"></div>
 	</div>
 
-	<footer th:fragment="foot">
-	</footer>
+	<div class="footer" th:fragment="foot">
+		<div>Contatti: *******.*********@gmail.com; 351 *** **** |
+			© 2022 |
+			Saint's Catering - Tutti i diritti riservati |
+			Sito web realizzato con creatività e passione da ******* *********</div>
+	</div>
 </body>
 
 </html>

@@ -90,7 +90,7 @@ public class Piatto {
 			return false;
 		Piatto other = (Piatto) obj;
 		return Objects.equals(buffet, other.buffet) && Objects.equals(descrizione, other.descrizione)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
+				&& Objects.equals(nome, other.nome);
 	}
 
 }

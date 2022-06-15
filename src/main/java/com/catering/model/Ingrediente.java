@@ -14,16 +14,16 @@ public class Ingrediente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotBlank
 	private String nome;
 	@NotBlank
 	private String descrizione;
 	@NotBlank
 	private String origine;
-	
-	//@ManyToMany
-	//private List<Piatto> piatti;
+
+	// @ManyToMany
+	// private List<Piatto> piatti;
 
 	public Long getId() {
 		return id;
@@ -64,7 +64,7 @@ public class Ingrediente {
 //	public void setPiatti(List<Piatto> piatti) {
 //		this.piatti = piatti;
 //	}	
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(descrizione, id, nome, origine);
@@ -79,7 +79,7 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(descrizione, other.descrizione) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome) && Objects.equals(origine, other.origine);
+		return Objects.equals(descrizione, other.descrizione) && Objects.equals(nome, other.nome)
+				&& Objects.equals(origine, other.origine);
 	}
 }

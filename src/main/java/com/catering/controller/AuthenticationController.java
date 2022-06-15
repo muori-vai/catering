@@ -2,6 +2,7 @@ package com.catering.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,16 +40,20 @@ public class AuthenticationController {
 		return "loginForm";
 	}
 
-//	@RequestMapping(value = "/login-error", method = RequestMethod.GET)
-//	public String showLoginFormError(Model model) {
-//		return "loginFormError";
-//	}
+	@RequestMapping(value = "/login-error", method = RequestMethod.GET)
+	public String showLoginFormError(Model model) {
+		return "loginFormError";
+	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
 		// ho aggiunto questo perché senza il logout funziona male
 		// (invalidateHttpSession = true (di AuthConfiguration) non va!), non so per
 		// quale motivo
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("nome", credentials.getUser().getNome());
+		
 		SecurityContextHolder.getContext().setAuthentication(null);
 		return "goodbye";
 	}

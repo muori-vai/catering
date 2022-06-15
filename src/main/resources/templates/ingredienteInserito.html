@@ -12,7 +12,8 @@
 		<div class="card card-border">
 			<h1 class="login">Ingrediente salvato con successo!</h1>
 			<a class="button-3" href="ingrediente.html" th:href="@{'/ingrediente/' + ${ingrediente.id}}">Vedi ingrediente in dettaglio</a>
-			<a class="button-3" href="ingredienti.html" th:href="@{/ingredienti}">Lista degli ingrediente</a>
+			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
+			<!--<a class="button-3" href="ingredienti.html" th:href="@{/ingredienti}">Lista degli ingrediente</a>-->
 		</div>
 		<div th:replace="fragments/svg.html :: svg-register-succesful">
 		</div>

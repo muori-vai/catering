@@ -36,7 +36,8 @@
 				</table>
 				<div>
 					<span><button type="submit" class="button-3">Conferma</button></span>
-					<a class="button-3" href="/" th:href="@{/default}">Annulla</a>
+					<!--<a class="button-3" href="/" th:href="@{/default}">Annulla</a>-->
+					<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>
 					<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
 				</div>
 			</form>

@@ -38,7 +38,7 @@ public class PiattoController {
 	@Transactional
 	@PostMapping("/buffet/{id}/piatto") // String perché ritorna il nome della vista
 	public String addPiatto(@Valid @ModelAttribute("piatto") Piatto piatto, BindingResult bindingResult,
-			@PathVariable Long id, Model model) {
+			@PathVariable("id") Long id, Model model) {
 
 		piatto.setBuffet(buffetService.findById(id));
 		model.addAttribute("listaIngredienti", ingredienteService.findAll());

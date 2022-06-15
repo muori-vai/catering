@@ -24,8 +24,9 @@
 			<div class="flex-row">
 				<a class="button-3" href=".html" th:href="@{'/confirmDeletePiatto/' + ${piatto.id}}"
 					th:text="Conferma">Conferma</a>
-				<a class="button-3" href="/piatti" th:href="@{/piatti}">Piatti</a>
-				<a class="button-3" href="/buffet" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
+				<!--<a class="button-3" href="/piatti" th:href="@{/piatti}">Piatti</a>
+				<a class="button-3" href="/buffet" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>-->
+				<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>
 			</div>
 		</div>
 		<div class="svg-beside" th:insert="fragments/svg.html :: svg-plate-insert">

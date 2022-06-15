@@ -9,7 +9,7 @@
 
 	<div class="container">
 		<div class="card">
-			<h1 class="index">Alla prossima!</h1>
+			<h1 class="index" th:text="'Ciao '+${nome}+', alla prossima!'">Alla prossima!</h1>
 			<div>
 				<a class="button-3 button-3-index" th:href="@{/}" th:text="Home">Home</a>
 			</div>

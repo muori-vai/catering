@@ -11,9 +11,10 @@
 	<div class="container">
 		<div class="card card-border">
 			<h1 class="login">Piatto salvato con successo!</h1>
-			<a class="button-3" href="piatto.html" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Buffet</a>
+			<a class="button-3" href="piatto.html" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Vedi Buffet</a>
 			<a class="button-3" href="piatto.html" th:href="@{'/piatto/' + ${piatto.id}}">Vedi piatto in dettaglio</a>
-			<a class="button-3" href="piatti.html" th:href="@{/piatti}">Lista dei piatti</a>
+			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
+			<!--<a class="button-3" href="piatti.html" th:href="@{/piatti}">Lista dei piatti</a>-->
 		</div>
 		<div th:replace="fragments/svg.html :: svg-register-succesful">
 		</div>

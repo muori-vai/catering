@@ -7,6 +7,10 @@
 <body class="home">
 	<div th:insert="fragments/common.html :: nav"></div>
 
+	<div th:insert="fragments/svg.html :: svg-wave-3"></div>
+	<div th:insert="fragments/svg.html :: svg-wave-4"></div>
+	<div class="background2"></div>
+
 	<div class="container-grid">
 		<a class="button-3 button-3-home flex-column" th:href="@{/chefs}">
 			<div th:insert="fragments/svg.html :: svg-chef"></div>
@@ -28,14 +32,16 @@
 			<div th:insert="fragments/svg.html :: svg-ingredient"></div>
 			<div>Visualizza Ingredienti</div>
 		</a>
-		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienteForm}" sec:authorize="hasAuthority('ADMIN')">
+		<a class="button-3 button-3-home flex-column" th:href="@{/ingredienteForm}"
+			sec:authorize="hasAuthority('ADMIN')">
+			<!-- In modo da essere visibile solo se l'utente è un ADMIN -->
 			<div th:insert="fragments/svg.html :: svg-ingredient-insert"></div>
 			<div>Inserisci Ingrediente</div>
 		</a>
 	</div>
 
 	<footer>
-		<div th:insert="fragments/common.html :: foot"></div>
+		<div th:replace="fragments/common.html :: foot"></div>
 	</footer>
 </body>
 

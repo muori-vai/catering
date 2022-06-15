@@ -85,7 +85,7 @@ public class Buffet {
 			return false;
 		Buffet other = (Buffet) obj;
 		return Objects.equals(chef, other.chef) && Objects.equals(descrizione, other.descrizione)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
+				&& Objects.equals(nome, other.nome);
 	}
 	
 }

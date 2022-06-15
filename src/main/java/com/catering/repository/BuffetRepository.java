@@ -9,7 +9,7 @@ import com.catering.model.Chef;
 
 public interface BuffetRepository extends CrudRepository<Buffet, Long> {
 
-	public boolean existsByNomeAndDescrizioneAndChef(String nome, String descrizione, Chef Chef);
+	public boolean existsByNomeAndDescrizioneAndChef(String nome, String descrizione, Chef chef);
 	
 	public List<Buffet> findByOrderByNome();
 }

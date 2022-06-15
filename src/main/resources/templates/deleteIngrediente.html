@@ -28,7 +28,8 @@
 			<div class="flex-row">
 				<a class="button-3" href="ingrediente.html"
 					th:href="@{'/confirmDeleteIngrediente/' + ${ingrediente.id}}" th:text="Conferma">Conferma</a>
-				<a class="button-3" href="/" th:href="@{/ingredienti}">Annulla</a>
+				<!--<a class="button-3" href="/" th:href="@{/ingredienti}">Annulla</a>-->
+				<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>
 				<!--<button class="button-3" onclick="history.back()">Indietro</button>-->
 
 			</div>

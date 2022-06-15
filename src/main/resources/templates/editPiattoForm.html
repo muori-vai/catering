@@ -40,8 +40,9 @@
 				</fieldset>
 				<div class="flex-row">
 					<span><button type="submit" class="button-3">Conferma</button></span>
-					<a class="button-3" href="/" th:href="@{/piatti}">Piatti</a>
-					<a class="button-3" href="/" th:href="@{'/buffet/' + ${idBuffet}}">Buffet</a>
+					<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>
+					<!--<a class="button-3" href="/" th:href="@{/piatti}">Piatti</a>
+					<a class="button-3" href="/" th:href="@{'/buffet/' + ${idBuffet}}">Buffet</a>-->
 				</div>
 			</div>
 		</form>

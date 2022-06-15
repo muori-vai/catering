@@ -26,7 +26,16 @@
 				</tr>
 			</table>
 			<div class="flex-row">
-				<a class="button-3" href="/" th:href="@{/ingredienti}">Lista degli ingredienti</a>
+				<a class="button-3" href="/" th:href="@{/ingredienti}">Vedi tutti gli Ingredienti</a>
+				<a class="button-3" sec:authorize="hasAuthority('ADMIN')" href="editIngredienteForm.html"
+					th:href="@{'/editIngredienteForm/' + ${ingrediente.id}}" th:text="modifica">modifica</a>
+				<a class="button-3" sec:authorize="hasAuthority('ADMIN')" href="deleteIngrediente.html"
+					th:href="@{'/deleteIngrediente/' + ${ingrediente.id}}" th:text="cancella">cancella</a>
+				<!-- Pulsante per tornare indietro, molto meglio di quello che avevo implementato prima -->
+				<!-- Questi sotto funzionano male in certe condizioni -->
+				<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
+				<!--<a href="javascript:javascript:history.go(-1)">Indietro</a>-->
+				<!--<a class="button-3" href="javascript:window.history.back();">Indietro</a>-->
 			</div>
 		</div>
 		<div class="svg-beside" th:insert="fragments/svg.html :: svg-ingredient-insert">
