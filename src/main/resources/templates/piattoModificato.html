@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Piatto inserito')">
+<head th:replace="fragments/common.html :: header(title='Piatto modificato')">
 </head>
 
 <body>
@@ -10,9 +10,9 @@
 
 	<div class="container">
 		<div class="card card-border">
-			<h1 class="login">Piatto inserito con successo!</h1>
+			<h1 class="login">Piatto modificato con successo!</h1>
 			<a class="button-3" href="piatto.html" th:href="@{'/buffet/' + ${piatto.buffet.id}}">Vedi Buffet</a>
-			<!--<a class="button-3" href="piatto.html" th:href="@{'/piatto/' + ${piatto.id}}">Vedi piatto in dettaglio</a>-->
+			<a class="button-3" href="piatto.html" th:href="@{'/piatto/' + ${piatto.id}}">Vedi piatto in dettaglio</a>
 			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
 			<!--<a class="button-3" href="piatti.html" th:href="@{/piatti}">Lista dei piatti</a>-->
 		</div>

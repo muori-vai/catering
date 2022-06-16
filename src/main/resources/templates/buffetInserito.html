@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/common.html :: header(title='Buffet salvato')">
+<head th:replace="fragments/common.html :: header(title='Buffet inserito')">
 </head>
 
 <body>
@@ -10,10 +10,10 @@
 
 	<div class="container">
 		<div class="card card-border">
-			<h1 class="login">Buffet salvato con successo!</h1>
-			<a class="button-3" href="buffet.html" th:href="@{'/chef/' + ${id}}">Vedi lo chef</a>
-			<a class="button-3" href="buffets.html" th:href="@{/buffets}">Vedi tutti i buffet</a>
-			<!--<a class="button-3" href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}">Vedi buffet in dettaglio</a> Non funziona -->
+			<h1 class="login">Buffet inserito con successo!</h1>
+			<a class="button-3" href="buffet.html" th:href="@{'/chef/' + ${id}}">Torna allo chef</a>
+			<!--<a class="button-3" href="buffets.html" th:href="@{/buffets}">Vedi tutti i buffet</a> non serve, sta nel navbar -->
+			<!--<a class="button-3" href="buffet.html" th:href="@{'/buffet/' + ${buffet.id}}">Vedi buffet in dettaglio</a>-->
 			<!--<a href="#" class="button-3" onclick="location.href = document.referrer; return false;">Indietro</a>-->
 		</div>
 		<div th:replace="fragments/svg.html :: svg-register-succesful">

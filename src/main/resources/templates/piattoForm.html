@@ -32,12 +32,44 @@
 				</div>
 				<fieldset class="field">
 					<legend>Seleziona ingredienti</legend>
-					<div th:each="ingrediente: ${listaIngredienti}">
+					<table class="listSelect">
+						<tr th:each="ingrediente: ${listaIngredienti}">
+							<td>
+								<input type="checkbox" id="${listaIngredienti}" th:field="*{ingredienti}"
+									name="ingrediente" th:value="${ingrediente.id}" />
+							</td>
+							<td>
+								<label for="${listaIngredienti}" th:text="${ingrediente.nome}">nome ingrediente</label>
+								<div class="tooltip">
+									<a href="ingrediente.html" th:href="@{'/ingrediente/' + ${ingrediente.id}}"
+										target="_blank">(dettagli)</a>
+									<div class="wrapper">
+										<table class="tooltiptext">
+											<tr>
+												<td>Nome:</td>
+												<td th:text="${ingrediente.nome}">nome ingrediente</td>
+											</tr>
+											<tr>
+												<td>Descrizione:</td>
+												<td th:text="${ingrediente.descrizione}">descrizione ingrediente</td>
+											</tr>
+											<tr>
+												<td>Origine:</td>
+												<td th:text="${ingrediente.origine}">origine ingrediente</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<!--<div th:each="ingrediente: ${listaIngredienti}">
 						<input type="checkbox" id="${listaIngredienti}" th:field="*{ingredienti}" name="ingrediente"
 							th:value="${ingrediente.id}" />
 						<label for="${listaIngredienti}" th:text="${ingrediente.nome}">nome ingrediente</label>
-						<a href="ingrediente.html" th:href="@{'/ingrediente/' + ${ingrediente.id}}">(dettagli)</a>
-					</div>
+						<a href="ingrediente.html"
+							th:href="@{'/ingrediente/' + ${ingrediente.id}}">(dettagli)</a>
+					</div>-->
 				</fieldset>
 				<div class="flex-row">
 					<span><button type="submit" class="button-3">Conferma</button></span>

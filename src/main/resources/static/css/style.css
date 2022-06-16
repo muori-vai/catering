@@ -206,14 +206,12 @@ div.card {
 	align-items: center;
 	text-align: center;
 }
-
 div.card-border {
 	border: solid 0px var(--color5);
 	border-radius: 25px;
 	height: auto;
 	background-color: rgba(var(--color3a), .6);
 }
-
 div.card h1.index {
 	margin-bottom: 1em;
 	font-family: 'Pacifico', cursive;
@@ -231,13 +229,11 @@ div.card-index {
 	min-height: 20em;
 	height: fit-content;
 }
-
 div.card h1.login {
 	margin: .1em;
 	font-family: 'Fjalla One', sans-serif;
 	font-size: 3em;
 }
-
 .card .form {
 	font-size: 1.7em;
 	display: flex;
@@ -275,7 +271,7 @@ div.card input {
 	padding: .5em .5em;
 	position: relative;
 	margin: .5em;
-}
+} /* ::before e ::after sono degli pseudo-elementi */
 .button-3::after, .button-3::before {
 	border: solid 0.1em var(--color5);
 	border-radius: 20px;
@@ -287,14 +283,13 @@ div.card input {
 	bottom: 0;
 	z-index: 0;
 	transition: transform 0.3s ease;
-}
+} /* trasla un bordo in basso a destra */
 .button-3:hover::after {
 	transform: translate(-.2em, -.2em);
-}
+} /* trasla un bordo in alto a sinistra */
 .button-3:hover::before {
 	transform: translate(.2em, .2em);
 }
-
 .button-3-home {
 	font-size: 2em;
 }
@@ -311,17 +306,20 @@ a {
 	text-decoration: none;
 	color: var(--color4);
 }
-
 a:hover {
 	color: var(--color5);
-}
-
+} /* per i link nel navbar */
 nav a {
 	color: var(--color2);
 }
-
 nav a:hover {
 	color: var(--color1);
+} /* classe usata solo per l'email presente nel footer che senza la quale avrebbe lo stesso colore dello sfondo '*/
+a.email {
+	color: var(--color5);
+}
+a.email:hover {
+	color: var(--color3);
 }
 
 .svg-wave-1 {
@@ -508,11 +506,14 @@ div .grid .container-grid-buttons .button-3:nth-child(3) {
 	transition-delay: 0.1s;
 }
 
-/*.grid > table, .card-side >*/ table {
+.grid > table, .card-side > table, table.form {
 	min-width: 12em;
 	background-color: var(--color2);
 	border-radius: 1em;
 	margin-bottom: 1em;
+}
+table.listSelect {
+	line-height: .5em;
 }
 
 .svg-wave-3 {
@@ -541,3 +542,27 @@ div .grid .container-grid-buttons .button-3:nth-child(3) {
 	background-color: var(--color4);
 }
 
+/* per far vedere i dettagli dell'ingrediente semplicemente mettendo il mouse sopra il link invece di cliccarlo */
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+.tooltip .tooltiptext {
+	pointer-events: none;
+	visibility: hidden;
+	background-color: var(--color5);
+	color: var(--color2);
+	border-radius: 6px;
+	/* Posizione del tooltip */
+	position: fixed;
+	z-index: 50;
+}
+/* in modo da far apparire i dettagli */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+/* per cambiare la posizione del tooltip anche con position:fixed */
+.tooltip div.wrapper {
+	position: absolute;
+  	top: calc(-5vh - 2em);
+}

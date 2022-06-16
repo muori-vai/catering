@@ -117,7 +117,7 @@ public class BuffetController {
 
 		Buffet vecchioBuffet = this.buffetService.findById(id);
 
-		model.addAttribute("idChef", vecchioBuffet.getChef().getId());
+		//model.addAttribute("idChef", vecchioBuffet.getChef().getId());
 
 		if (!vecchioBuffet.equals(buffet))
 			this.buffetValidator.validate(buffet, bindingResult);
@@ -128,7 +128,7 @@ public class BuffetController {
 
 			this.buffetService.save(vecchioBuffet);
 			model.addAttribute("buffet", vecchioBuffet);
-			return "buffetInserito.html";
+			return "buffetModificato.html";
 		}
 
 		return "editBuffetForm.html";

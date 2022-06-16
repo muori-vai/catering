@@ -24,19 +24,20 @@
 				<a href="/" th:href="@{/default}" th:text="Home">Home</a>
 			</div>
 			<div class="navbar">
-				<a href="/chefs" th:href="@{/chefs}">Chefs</a>
+				<a href="chefs.html" th:href="@{/chefs}">Chefs</a>
 			</div>
 			<div class="navbar">
-				<a href="/buffets" th:href="@{/buffets}">Buffets</a>
+				<a href="buffets.html" th:href="@{/buffets}">Buffets</a>
 			</div>
 			<div class="navbar">
-				<a href="/piatti" th:href="@{/piatti}">Piatti</a>
+				<a href="piatti.html" th:href="@{/piatti}">Piatti</a>
 			</div>
 			<div class="navbar">
-				<a href="/ingredienti" th:href="@{/ingredienti}">Ingredienti</a>
+				<a href="ingredienti.html" th:href="@{/ingredienti}">Ingredienti</a>
 			</div>
 			<div class="navbar">
-				<a th:href="@{/logout}" th:text="Esci">Esci</a>
+				<!--<a th:href="@{/logout}" th:text="Esci">Esci</a>-->
+				<a href="askLogout.html" th:href="@{/askLogout}">Esci</a>
 			</div>
 		</div>
 	</nav>
@@ -49,7 +50,7 @@
 	</div>
 
 	<div class="footer" th:fragment="foot">
-		<div>Contatti: *******.*********@gmail.com; 351 *** **** |
+		<div>Contatti: <a class="email" href ="mailto:*******.*********@gmail.com">*******.*********@gmail.com</a>; 351 *** **** |
 			© 2022 |
 			Saint's Catering - Tutti i diritti riservati |
 			Sito web realizzato con creatività e passione da ******* *********</div>

@@ -138,7 +138,7 @@ public class PiattoController {
 
 		Piatto vecchioPiatto = this.piattoService.findById(id);
 
-		model.addAttribute("idBuffet", vecchioPiatto.getBuffet().getId());
+		//model.addAttribute("idBuffet", vecchioPiatto.getBuffet().getId());
 		model.addAttribute("listaIngredienti", ingredienteService.findAll());
 
 		if (!vecchioPiatto.equals(piatto))
@@ -152,7 +152,7 @@ public class PiattoController {
 			this.piattoService.save(vecchioPiatto);
 			model.addAttribute("piatto", vecchioPiatto);
 			
-			return "piattoInserito.html";
+			return "piattoModificato.html";
 		}
 
 		return "editPiattoForm.html";

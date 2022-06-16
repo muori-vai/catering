@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common.html :: header(title='Logout')">
+</head>
+
+<body>
+	<!--<div th:insert="fragments/common.html :: nav"></div>-->
+	<div th:replace="fragments/common.html :: default-background"></div>
+
+	<div class="container">
+		<div class="card card-border">
+			<h1 class="login">Stai per uscire dall'account</h1>
+			<div class="flex-row">
+				<a class="button-3" th:href="@{/logout}" th:text="Conferma">Conferma</a>
+				<a class="button-3" href="home.html" th:href="@{/default}">Annulla</a>
+			</div>
+		</div>
+		<div th:replace="fragments/svg.html :: svg-exit">
+		</div>
+	</div>
+
+	<footer>
+		<div th:insert="fragments/common.html :: foot"></div>
+	</footer>
+
+</body>
+
+</html>

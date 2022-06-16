@@ -57,6 +57,11 @@ public class AuthenticationController {
 		SecurityContextHolder.getContext().setAuthentication(null);
 		return "goodbye";
 	}
+	
+	@RequestMapping(value = "/askLogout", method = RequestMethod.GET)
+	public String showLogout(Model model) {
+		return "askLogout.html";
+	}
 
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
 	public String defaultAfterLogin(Model model) {
